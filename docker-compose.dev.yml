@@ -1,0 +1,32 @@
+# Development overrides — adds hot reload and dev dependencies to each service.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  minka-backend:
+    build:
+      context: ./minka-backend
+      dockerfile: Dockerfile
+      target: deps
+    command: npm run start:dev
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./minka-backend:/app
+      - /app/node_modules
+
+  minka-web:
+    build:
+      context: ./minka-web
+      dockerfile: Dockerfile
+      target: deps
+    command: npm run dev
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./minka-web:/app
+      - /app/node_modules
+      - /app/.next
+
+  minka-mobile-metro:
+    environment:
+      NODE_ENV: development

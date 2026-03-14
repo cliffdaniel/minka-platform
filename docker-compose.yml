@@ -1,0 +1,83 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: minka-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-minka}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-minka_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-minka_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-minka} -d ${POSTGRES_DB:-minka_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - minka-network
+
+  minka-backend:
+    build:
+      context: ./minka-backend
+      dockerfile: Dockerfile
+    container_name: minka-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: ${BACKEND_PORT:-4000}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-minka}:${POSTGRES_PASSWORD:-minka_secret}@postgres:5432/${POSTGRES_DB:-minka_db}
+    ports:
+      - "${BACKEND_PORT:-4000}:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - minka-network
+
+  minka-web:
+    build:
+      context: ./minka-web
+      dockerfile: Dockerfile
+    container_name: minka-web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: ${WEB_PORT:-3000}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000}
+      # Internal API URL used server-side (container-to-container)
+      API_URL: http://minka-backend:4000
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      - minka-backend
+    networks:
+      - minka-network
+
+  minka-mobile-metro:
+    build:
+      context: ./minka-mobile
+      dockerfile: Dockerfile
+    container_name: minka-mobile-metro
+    restart: unless-stopped
+    environment:
+      API_URL: http://minka-backend:4000
+    ports:
+      - "${METRO_PORT:-8081}:8081"
+    volumes:
+      # Hot reload: mount source for development
+      - ./minka-mobile:/app
+      - /app/node_modules
+    depends_on:
+      - minka-backend
+    networks:
+      - minka-network
+
+volumes:
+  postgres_data:
+
+networks:
+  minka-network:
+    driver: bridge

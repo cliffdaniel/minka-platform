@@ -1,0 +1,11 @@
+[submodule "minka-web"]
+	path = minka-web
+	url = https://github.com/YOUR_GITHUB_USERNAME/minka-web.git
+
+[submodule "minka-backend"]
+	path = minka-backend
+	url = https://github.com/YOUR_GITHUB_USERNAME/minka-backend.git
+
+[submodule "minka-mobile"]
+	path = minka-mobile
+	url = https://github.com/YOUR_GITHUB_USERNAME/minka-mobile.git
