@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arquitectura · Minka</title>
+    <link rel="stylesheet" href="diagramas.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="page header-row">
+            <a class="wordmark" href="index.html">Minka</a>
+            <nav aria-label="Diagramas">
+                <a href="index.html">Biblioteca</a>
+                <a href="base-de-datos.html">Base de datos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="page-heading">
+            <h1>Arquitectura de Minka</h1>
+            <p>Servicios y conexiones definidos en Docker Compose con los puertos de desarrollo habituales.</p>
+        </div>
+
+        <figure class="diagram-panel">
+            <div class="diagram-stage diagram-stage-flow" tabindex="0" role="region" aria-label="Diagrama de servicios">
+                <img src="recursos/arquitectura.svg" alt="El navegador se conecta a Next.js, que consulta NestJS. Mobile consulta NestJS y recibe el bundle de Metro en desarrollo. NestJS accede a PostgreSQL mediante TypeORM y la base persiste sus datos en postgres_data.">
+            </div>
+            <figcaption class="diagram-links">
+                <a href="recursos/arquitectura.svg">Abrir a tamaño completo</a>
+                <a href="recursos/arquitectura.mmd" download>Descargar fuente Mermaid</a>
+            </figcaption>
+        </figure>
+
+        <section class="notes" aria-labelledby="sesion">
+            <h2 id="sesion">Sesión y autorización</h2>
+            <ul>
+                <li><strong>Web.</strong> Next.js envía las credenciales a NestJS y guarda el token en una cookie <code>HttpOnly</code>.</li>
+                <li><strong>Mobile.</strong> La app llama a NestJS, guarda el token en el almacén seguro y lo envía en <code>Authorization</code>. En desarrollo, Android usa <code>10.0.2.2:4000</code> y el simulador iOS usa <code>127.0.0.1:4000</code>.</li>
+                <li><strong>Backend.</strong> NestJS valida la sesión y el rol antes de cargar el panel, administrar cuentas o publicar carreras. El backend local expone <a href="http://localhost:4000/api/docs">Swagger UI</a> y el <a href="http://localhost:4000/api/docs-json">JSON de OpenAPI</a>.</li>
+            </ul>
+        </section>
+
+        <section class="notes" aria-labelledby="codigo">
+            <h2 id="codigo">Organización del código</h2>
+            <p>En Backend, los módulos agrupan el código por funcionalidad. El dominio define reglas y contratos, la aplicación aloja casos de uso, la infraestructura conecta TypeORM con PostgreSQL y las interfaces HTTP exponen los endpoints. Web y Mobile tienen sus propias capas de presentación y adaptadores de API.</p>
+        </section>
+    </main>
+</body>
+</html>

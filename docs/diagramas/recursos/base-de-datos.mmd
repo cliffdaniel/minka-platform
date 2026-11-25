@@ -1,0 +1,74 @@
+erDiagram
+    users ||..o{ auth_sessions : "tiene sesiones"
+    users |o..o{ events : "organiza · referencia lógica"
+    users |o..o{ gear : "posee · referencia lógica"
+    users |o..o{ integrations : "vincula · referencia lógica"
+
+    users {
+        uuid id PK
+        varchar email UK
+        varchar name
+        users_role_enum role
+        text sports "lista simple opcional"
+        varchar city "opcional"
+        varchar avatarUrl "opcional"
+        varchar stravaId "opcional"
+        varchar garminId "opcional"
+        varchar passwordHash "opcional"
+    }
+
+    auth_sessions {
+        varchar token_hash PK
+        uuid user_id FK
+        timestamptz expires_at
+    }
+
+    events {
+        uuid id PK
+        varchar title
+        text description "opcional"
+        timestamp date
+        varchar location "opcional"
+        varchar city "opcional"
+        events_status_enum status
+        varchar organizerId "opcional"
+        varchar registrationUrl "opcional"
+    }
+
+    gear {
+        uuid id PK
+        varchar name
+        varchar brand "opcional"
+        varchar model "opcional"
+        gear_type_enum type
+        varchar imageUrl "opcional"
+        varchar userId
+    }
+
+    integrations {
+        uuid id PK
+        varchar userId
+        integrations_provider_enum provider
+        varchar providerUserId
+        text accessToken "opcional"
+        text refreshToken "opcional"
+        timestamp tokenExpiresAt "opcional"
+        bool isActive
+    }
+
+    groups {
+        uuid id PK
+        varchar name UK
+        varchar description "opcional"
+        varchar logoUrl "opcional"
+        groups_sportfocus_enum sportFocus
+        varchar city "opcional"
+        bool isPublic
+    }
+
+    sports {
+        uuid id PK
+        varchar name UK
+        varchar description "opcional"
+        varchar iconUrl "opcional"
+    }

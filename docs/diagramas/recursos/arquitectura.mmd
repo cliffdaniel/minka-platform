@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph clients["Clientes"]
+        browser["Navegador"]
+        app["Minka Mobile · React Native · Android y iOS"]
+    end
+
+    subgraph compose["Docker Compose · minka-network"]
+        web["minka-web · Next.js · 3000"]
+        api["minka-backend · NestJS · 4000"]
+        db[("postgres · PostgreSQL 16 · 5432")]
+        volume[("postgres_data · volumen")]
+        metro["minka-mobile-metro · 8081 · desarrollo"]
+    end
+
+    browser -->|"Páginas y formularios"| web
+    web -->|"REST /api · API_URL"| api
+    app -->|"REST /api · sesión Bearer"| api
+    app -.->|"Bundle JavaScript en desarrollo"| metro
+    api -->|"TypeORM · lecturas y escrituras"| db
+    db ---|"Persistencia"| volume
