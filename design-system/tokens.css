@@ -1,0 +1,40 @@
+:root {
+    color-scheme: light;
+    --canvas: #f7f8f5;
+    --surface: #ffffff;
+    --surface-subtle: #eff3eb;
+    --field: #f8faf7;
+    --border: #dce5db;
+    --border-strong: #84968a;
+    --ink: #192d25;
+    --muted: #53675e;
+    --brand: #265846;
+    --brand-hover: #1c4436;
+    --success: #24603f;
+    --success-bg: #eaf3e9;
+    --warning: #844c16;
+    --warning-bg: #f9eedc;
+    --danger: #a82e31;
+    --danger-bg: #fff4f4;
+
+    --font: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --radius-field: 12px;
+    --radius-panel: 20px;
+    --radius-hero: 28px;
+    --focus: 2px solid var(--brand);
+    --shadow: 0 12px 40px #192d2510;
+    --sidebar-width: 232px;
+    --rail-width: 72px;
+    --topbar-height: 64px;
+    --mobile-bar-height: 56px;
+    --target-size: 48px;
+}
