@@ -25,7 +25,7 @@
 
         <figure class="diagram-panel">
             <div class="diagram-stage diagram-stage-erd" tabindex="0" role="region" aria-label="Diagrama de tablas con desplazamiento horizontal">
-                <img src="recursos/base-de-datos.svg" alt="La tabla users tiene sesiones en auth_sessions. Events, gear e integrations referencian usuarios de forma lógica. Groups y sports son tablas independientes.">
+                <img src="recursos/base-de-datos.svg" alt="La tabla users tiene sesiones en auth_sessions y puede tener un perfil de organizador en organizer_profiles. Events, gear e integrations referencian usuarios de forma lógica. Groups y sports son tablas independientes.">
             </div>
             <figcaption class="diagram-links">
                 <span><code>PK</code> primaria · <code>FK</code> foránea · <code>UK</code> única</span>
@@ -38,6 +38,7 @@
             <h2 id="relaciones">Claves y relaciones</h2>
             <ul>
                 <li><code>auth_sessions.user_id</code> es una clave foránea a <code>users.id</code> con <code>ON DELETE CASCADE</code>.</li>
+                <li><code>organizer_profiles.organizerId</code> es clave primaria y foránea a <code>users.id</code>. Los eventos guardan disciplina en <code>events.sport</code> y modalidad opcional en <code>events.modality</code>.</li>
                 <li><code>events.organizerId</code>, <code>gear.userId</code> e <code>integrations.userId</code> son referencias lógicas en columnas <code>varchar</code>. <code>users.sports</code> guarda una lista en texto independiente del catálogo <code>sports</code>.</li>
                 <li><code>users.role</code> admite <code>super_admin</code>, <code>organizer</code> y <code>runner</code>. <code>events.status</code> admite <code>draft</code>, <code>published</code>, <code>completed</code> y <code>cancelled</code>.</li>
                 <li>Las tablas con <code>id</code> UUID también tienen <code>createdAt</code> y <code>updatedAt</code>. La tabla operativa <code>migrations</code> registra las migraciones que aplica TypeORM.</li>
