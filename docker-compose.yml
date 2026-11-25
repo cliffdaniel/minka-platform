@@ -28,6 +28,9 @@ services:
     environment:
       NODE_ENV: production
       PORT: ${BACKEND_PORT:-4000}
+      DB_SYNC: ${DB_SYNC:-true}
+      DB_MIGRATIONS_RUN: ${DB_MIGRATIONS_RUN:-false}
+      MINKA_ADMIN_PASSWORD: ${MINKA_ADMIN_PASSWORD:-}
       DATABASE_URL: postgresql://${POSTGRES_USER:-minka}:${POSTGRES_PASSWORD:-minka_secret}@postgres:5432/${POSTGRES_DB:-minka_db}
     ports:
       - "${BACKEND_PORT:-4000}:4000"

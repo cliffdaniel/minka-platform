@@ -2,6 +2,8 @@
 
 Repositorio orquestador de la plataforma Minka. Gestiona los tres proyectos independientes via Git submodules y los levanta en conjunto mediante Docker Compose.
 
+El [registro de funcionalidades](FEATURES.md) documenta los flujos disponibles y los endpoints que los respaldan. La API se puede explorar en [Swagger UI](http://localhost:4000/api/docs) con el backend local levantado.
+
 La [biblioteca de diagramas](docs/diagramas/index.html) reúne la arquitectura y el esquema de PostgreSQL en páginas HTML que se pueden abrir localmente en el navegador.
 
 ## Repositorios
