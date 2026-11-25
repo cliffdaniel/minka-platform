@@ -1,5 +1,6 @@
 erDiagram
     users ||..o{ auth_sessions : "tiene sesiones"
+    users ||--o| organizer_profiles : "posee un perfil"
     users |o..o{ events : "organiza · referencia lógica"
     users |o..o{ gear : "posee · referencia lógica"
     users |o..o{ integrations : "vincula · referencia lógica"
@@ -23,9 +24,22 @@ erDiagram
         timestamptz expires_at
     }
 
+    organizer_profiles {
+        uuid organizerId PK,FK
+        varchar displayName
+        varchar legalName "opcional"
+        varchar city "opcional"
+        varchar contactEmail "opcional"
+        varchar website "opcional"
+        text description "opcional"
+        text logoDataUrl "opcional"
+    }
+
     events {
         uuid id PK
         varchar title
+        varchar sport
+        varchar modality "opcional"
         text description "opcional"
         timestamp date
         varchar location "opcional"

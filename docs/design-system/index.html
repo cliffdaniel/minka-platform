@@ -35,8 +35,8 @@
                     <span class="tag">En revisión</span>
                     <h1>Sistema de diseño <span>Minka</span></h1>
                     <p>
-                        Una interfaz clara para organizar carreras y participar en ellas, desde Web, Android
-                        e iOS.
+                        Una interfaz clara para organizar eventos deportivos y participar en ellos, desde
+                        Web, Android e iOS.
                     </p>
                     <div class="intro-actions">
                         <a class="button primary" href="#navegacion"
@@ -107,7 +107,7 @@
                     <h2 id="nav-heading">Navegación</h2>
                     <p class="lede">
                         Cambia de dispositivo y rol. Selecciona un destino, abre el menú de cuenta o prueba
-                        «Nueva carrera».
+                        «Nuevo evento».
                     </p>
 
                     <div class="lab">
@@ -157,9 +157,9 @@
                                             <span aria-hidden="true">◫</span
                                             ><span class="nav-label">Inicio</span>
                                         </button>
-                                        <button type="button" data-page="races" title="Mis carreras">
+                                        <button type="button" data-page="races" title="Mis eventos">
                                             <span aria-hidden="true">◎</span
-                                            ><span class="nav-label" data-races-label>Mis carreras</span>
+                                            ><span class="nav-label" data-races-label>Mis eventos</span>
                                         </button>
                                         <button type="button" data-page="accounts" title="Usuarios" hidden>
                                             <span aria-hidden="true">◉</span
@@ -178,10 +178,10 @@
                                                 class="button primary new-race"
                                                 id="new-race"
                                                 type="button"
-                                                aria-label="Nueva carrera"
+                                                aria-label="Nuevo evento"
                                             >
                                                 <span aria-hidden="true">+</span
-                                                ><span class="action-text">Nueva carrera</span>
+                                                ><span class="action-text">Nuevo evento</span>
                                             </button>
                                             <details class="account-menu">
                                                 <summary aria-label="Menú de la cuenta">
@@ -204,7 +204,7 @@
                                                 <div>
                                                     <h3 id="greeting">Hola, Organizador Minka</h3>
                                                     <p id="welcome-copy">
-                                                        Consulta tus próximas carreras y organiza lo que
+                                                        Consulta tus próximos eventos y organiza lo que
                                                         viene.
                                                     </p>
                                                 </div>
@@ -215,9 +215,9 @@
                                                     height="853"
                                                 />
                                             </div>
-                                            <div class="metrics" aria-label="Resumen de carreras">
+                                            <div class="metrics" aria-label="Resumen de eventos">
                                                 <div>
-                                                    <span id="first-metric-label">Carreras publicadas</span
+                                                    <span id="first-metric-label">Eventos publicados</span
                                                     ><strong class="race-count">0</strong>
                                                 </div>
                                                 <div>
@@ -229,9 +229,9 @@
                                         <section id="races-view" class="app-card" hidden>
                                             <div class="empty-state" id="races-empty">
                                                 <span aria-hidden="true">◎</span
-                                                ><strong>Aún no hay carreras</strong>
+                                                ><strong>Aún no hay eventos</strong>
                                                 <p id="races-empty-hint">
-                                                    Usa «Nueva carrera» para publicar la primera.
+                                                    Usa «Nuevo evento» para publicar el primero.
                                                 </p>
                                             </div>
                                             <ul id="sample-races" class="sample-list"></ul>
@@ -274,7 +274,7 @@
                                     </button>
                                     <button type="button" data-page="races">
                                         <span aria-hidden="true">◎</span
-                                        ><span data-races-label>Mis carreras</span>
+                                        ><span data-races-label>Mis eventos</span>
                                     </button>
                                     <button type="button" data-page="accounts" hidden>
                                         <span aria-hidden="true">◉</span><span>Usuarios</span>
@@ -301,7 +301,8 @@
                             <p>
                                 Izquierda: título de la ruta. Derecha: una acción primaria contextual y el
                                 menú de cuenta. En detalles, coloca «Volver» junto al título en esa misma
-                                barra. El cierre de sesión vive en el menú de cuenta.
+                                barra. El menú de cuenta contiene el cierre de sesión y, para el
+                                organizador, el acceso a su perfil.
                             </p>
                         </article>
                         <article class="spec">
@@ -316,9 +317,9 @@
                         <article class="spec">
                             <h3>Rutas y permisos</h3>
                             <p>
-                                Inicio y carreras aparecen en los tres roles. Administración de usuarios
-                                solo para super administradores. «Nueva carrera» solo para organizadores y
-                                super administradores. El backend valida cada operación.
+                                Inicio y eventos aparecen en los tres roles. Administración de usuarios solo
+                                para super administradores. «Nuevo evento» solo para organizadores y super
+                                administradores. El backend valida cada operación.
                             </p>
                         </article>
                     </div>
@@ -358,6 +359,14 @@
                                 Usa título, contenido y una acción contextual cuando corresponda. Aplica
                                 superficie blanca, borde de 1 px, radio de 20 y relleno de 16 a 24. Lista,
                                 métricas y formularios comparten esta estructura.
+                            </p>
+                        </article>
+                        <article class="spec" id="perfil-organizador">
+                            <h3>Perfil del organizador</h3>
+                            <p>
+                                Se abre desde el menú de cuenta. La vista muestra el logo y su
+                                previsualización junto al nombre público, razón social y datos de contacto.
+                                El formulario conserva los datos si falla el guardado.
                             </p>
                         </article>
                         <article class="spec">
@@ -405,7 +414,7 @@
                         </article>
                         <article class="sample">
                             <h3>Input</h3>
-                            <label for="example-input">Nombre de la carrera</label
+                            <label for="example-input">Nombre del evento</label
                             ><input
                                 id="example-input"
                                 placeholder="Ej. Carrera del Misti 10K"
@@ -437,9 +446,9 @@
                         <article class="sample">
                             <h3>Estado y feedback</h3>
                             <div class="sample-row">
-                                <span class="status success">Publicada</span
+                                <span class="status success">Publicado</span
                                 ><span class="status warning">Borrador</span
-                                ><span class="status danger">Cancelada</span>
+                                ><span class="status danger">Cancelado</span>
                             </div>
                             <p>
                                 Usa texto además del color. Anuncia confirmaciones de forma discreta y
@@ -449,7 +458,7 @@
                     </div>
                     <article class="sample panel-demo">
                         <div class="panel-demo-header">
-                            <h3>Panel de carreras</h3>
+                            <h3>Panel de eventos</h3>
                             <div class="role-control">
                                 <label for="panel-status">Estado del panel</label>
                                 <select id="panel-status">
@@ -462,15 +471,15 @@
                         </div>
                         <div class="panel-example" aria-live="polite">
                             <div class="empty-state" data-panel="empty">
-                                <strong>Aún no hay carreras</strong>
-                                <p>Publica la primera desde «Nueva carrera».</p>
+                                <strong>Aún no hay eventos</strong>
+                                <p>Publica el primero desde «Nuevo evento».</p>
                             </div>
                             <div class="skeleton" data-panel="loading" hidden>
-                                <p>Cargando carreras…</p>
+                                <p>Cargando eventos…</p>
                                 <span></span><span></span>
                             </div>
                             <div class="panel-error" data-panel="error" hidden>
-                                <strong>No se pudieron cargar las carreras.</strong>
+                                <strong>No se pudieron cargar los eventos.</strong>
                                 <p>Comprueba tu conexión e inténtalo de nuevo.</p>
                                 <button type="button" class="button secondary" id="retry-panel">
                                     Reintentar
@@ -481,7 +490,7 @@
                                     <strong>Carrera del Misti 10K</strong>
                                     <p>Arequipa · 20 de marzo</p>
                                 </div>
-                                <span class="status success">Publicada</span>
+                                <span class="status success">Publicado</span>
                             </div>
                         </div>
                     </article>
@@ -498,8 +507,8 @@
                 <section class="doc-section" id="storybook" aria-labelledby="stories-heading">
                     <h2 id="stories-heading">Storybook de Web y Mobile</h2>
                     <p class="lede">
-                        El HTML fija el comportamiento visual. Las historias usan los componentes
-                        reales de cada plataforma con los mismos nombres y escenarios.
+                        El HTML fija el comportamiento visual. Las historias usan los componentes reales de
+                        cada plataforma con los mismos nombres y escenarios.
                     </p>
                     <div class="table-wrap">
                         <table>
@@ -527,7 +536,7 @@
                                     <td>Web y Mobile · Minka / Navigation / Shell</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Panel / RaceList / Form</th>
+                                    <th scope="row">Panel / EventList / Form</th>
                                     <td>Default, Empty, Loading, Error, Populated, RetryWithData</td>
                                     <td>Web y Mobile · Minka / Panels</td>
                                 </tr>
@@ -568,15 +577,34 @@
             <form id="sample-form">
                 <header>
                     <div>
-                        <h2 id="dialog-title">Nueva carrera</h2>
+                        <h2 id="dialog-title">Nuevo evento</h2>
                         <p>Los datos se usan solo en esta maqueta.</p>
                     </div>
                     <button class="button secondary" type="button" id="close-dialog">Volver</button>
                 </header>
-                <label for="demo-race-name">Nombre de la carrera</label>
+                <label for="demo-race-name">Nombre del evento</label>
                 <input id="demo-race-name" name="name" maxlength="120" required autofocus />
                 <label for="demo-race-city">Ciudad</label>
                 <input id="demo-race-city" name="city" maxlength="100" required />
+                <label for="demo-event-sport">Disciplina</label>
+                <select id="demo-event-sport" name="sport">
+                    <option>Running</option>
+                    <option>Atletismo</option>
+                    <option>Trail</option>
+                    <option>Triatlón</option>
+                    <option>Duatlón</option>
+                    <option>Ciclismo</option>
+                    <option>Natación</option>
+                    <option>Fitness competitivo</option>
+                    <option>Otra disciplina</option>
+                </select>
+                <label for="demo-event-modality">Modalidad (opcional)</label>
+                <input
+                    id="demo-event-modality"
+                    name="modality"
+                    maxlength="80"
+                    placeholder="Ej. Maratón o Sprint"
+                />
                 <button class="button primary" type="submit">Añadir a la maqueta</button>
             </form>
         </dialog>
