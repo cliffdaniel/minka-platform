@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="es-PE">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Sistema de diseño de Minka para Web, Android e iOS." />
+        <title>Sistema de diseño · Minka</title>
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="design-system.css" />
+        <link rel="stylesheet" href="preview.css" />
+        <script src="preview.js" defer></script>
+    </head>
+    <body>
+        <a class="skip" href="#contenido">Ir al contenido</a>
+        <header class="site-header">
+            <div class="site-inner">
+                <a class="brand" href="../index.html"
+                    ><span class="mark" aria-hidden="true">M</span> Minka</a
+                >
+                <a href="../index.html" class="text-link">Biblioteca <span aria-hidden="true">↗</span></a>
+            </div>
+        </header>
+
+        <div class="doc-layout">
+            <nav class="doc-nav" aria-label="Contenido del sistema de diseño">
+                <a href="#principios">Línea gráfica</a>
+                <a href="#navegacion">Navegación</a>
+                <a href="#layouts">Layouts y paneles</a>
+                <a href="#componentes">Componentes</a>
+                <a href="#storybook">Storybook</a>
+            </nav>
+
+            <main id="contenido" class="doc-main" tabindex="-1">
+                <header class="intro" id="principios">
+                    <span class="tag">En revisión</span>
+                    <h1>Sistema de diseño <span>Minka</span></h1>
+                    <p>
+                        Una interfaz clara para organizar carreras y participar en ellas, desde Web, Android
+                        e iOS.
+                    </p>
+                    <div class="intro-actions">
+                        <a class="button primary" href="#navegacion"
+                            >Probar la navegación <span aria-hidden="true">↓</span></a
+                        >
+                        <a class="button secondary" href="tokens.css" download
+                            >Descargar tokens <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </header>
+
+                <section class="doc-section" aria-labelledby="visual-heading">
+                    <h2 id="visual-heading">Línea gráfica</h2>
+                    <p class="lede">
+                        Blanco en superficies de trabajo, verde bosque para acciones y verde salvia para
+                        agrupar. La fotografía de running abre el panel y deja los datos y formularios en
+                        superficies lisas.
+                    </p>
+                    <div class="swatches">
+                        <div class="swatch">
+                            <span style="background: var(--surface)"></span><strong>Superficie</strong
+                            ><code>#FFFFFF</code>
+                        </div>
+                        <div class="swatch">
+                            <span style="background: var(--canvas)"></span><strong>Lienzo</strong
+                            ><code>#F7F8F5</code>
+                        </div>
+                        <div class="swatch">
+                            <span style="background: var(--surface-subtle)"></span><strong>Salvia</strong
+                            ><code>#EFF3EB</code>
+                        </div>
+                        <div class="swatch">
+                            <span style="background: var(--brand)"></span><strong>Acción</strong
+                            ><code>#265846</code>
+                        </div>
+                        <div class="swatch">
+                            <span style="background: var(--ink)"></span><strong>Texto</strong
+                            ><code>#192D25</code>
+                        </div>
+                    </div>
+                    <div class="spec-grid">
+                        <article class="spec">
+                            <h3>Tipografía</h3>
+                            <p>
+                                Geist en Web. Usa la familia del sistema en iOS y Android. Mantén la
+                                jerarquía y permite el escalado de texto.
+                            </p>
+                            <p class="scale">
+                                <strong>32–48</strong> bienvenida · <strong>20–24</strong> sección ·
+                                <strong>14–16</strong> cuerpo · <strong>12–13</strong> etiqueta.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Ritmo y forma</h3>
+                            <p>
+                                Cuadrícula de 4 unidades. Usa 16/24 en móvil y 24/32 en escritorio. Radios
+                                de 12 en campos, 20 en paneles y 28 en bienvenida.
+                            </p>
+                            <p class="scale">
+                                Los valores se aplican como <code>px</code> en Web y unidades independientes
+                                de densidad en Mobile.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="navegacion" aria-labelledby="nav-heading">
+                    <h2 id="nav-heading">Navegación</h2>
+                    <p class="lede">
+                        Cambia de dispositivo y rol. Selecciona un destino, abre el menú de cuenta o prueba
+                        «Nueva carrera».
+                    </p>
+
+                    <div class="lab">
+                        <div class="lab-controls">
+                            <fieldset class="segments">
+                                <legend>Dispositivo</legend>
+                                <label
+                                    ><input type="radio" name="device" value="desktop" checked /><span
+                                        >Escritorio</span
+                                    ></label
+                                >
+                                <label
+                                    ><input type="radio" name="device" value="tablet" /><span
+                                        >Tableta</span
+                                    ></label
+                                >
+                                <label
+                                    ><input type="radio" name="device" value="mobile" /><span
+                                        >Móvil</span
+                                    ></label
+                                >
+                            </fieldset>
+                            <div class="role-control">
+                                <label for="role">Vista por rol</label>
+                                <select id="role">
+                                    <option value="organizer">Organizador</option>
+                                    <option value="runner">Runner</option>
+                                    <option value="super_admin">Super administrador</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="stage">
+                            <div class="app-preview" id="app-preview" data-device="desktop">
+                                <aside class="app-sidebar">
+                                    <div class="brand app-brand">
+                                        <span class="mark" aria-hidden="true">M</span
+                                        ><span class="nav-label">Minka</span>
+                                    </div>
+                                    <nav class="app-destinations" aria-label="Destinos de la aplicación">
+                                        <button
+                                            type="button"
+                                            data-page="home"
+                                            aria-current="page"
+                                            title="Inicio"
+                                        >
+                                            <span aria-hidden="true">◫</span
+                                            ><span class="nav-label">Inicio</span>
+                                        </button>
+                                        <button type="button" data-page="races" title="Mis carreras">
+                                            <span aria-hidden="true">◎</span
+                                            ><span class="nav-label" data-races-label>Mis carreras</span>
+                                        </button>
+                                        <button type="button" data-page="accounts" title="Usuarios" hidden>
+                                            <span aria-hidden="true">◉</span
+                                            ><span class="nav-label">Usuarios</span>
+                                        </button>
+                                    </nav>
+                                </aside>
+
+                                <div class="app-workspace">
+                                    <header class="app-topbar">
+                                        <div class="app-route">
+                                            <strong id="screen-title">Inicio</strong>
+                                        </div>
+                                        <div class="app-actions">
+                                            <button
+                                                class="button primary new-race"
+                                                id="new-race"
+                                                type="button"
+                                                aria-label="Nueva carrera"
+                                            >
+                                                <span aria-hidden="true">+</span
+                                                ><span class="action-text">Nueva carrera</span>
+                                            </button>
+                                            <details class="account-menu">
+                                                <summary aria-label="Menú de la cuenta">
+                                                    <span id="initials" aria-hidden="true">OM</span>
+                                                </summary>
+                                                <div class="account-popup">
+                                                    <strong id="account-name">Organizador Minka</strong>
+                                                    <span id="account-role" class="muted">Organizador</span>
+                                                    <button type="button" id="sign-out">
+                                                        Cerrar sesión
+                                                    </button>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </header>
+
+                                    <div class="app-content" id="preview-content" aria-live="polite">
+                                        <div id="home-view">
+                                            <div class="preview-hero">
+                                                <div>
+                                                    <h3 id="greeting">Hola, Organizador Minka</h3>
+                                                    <p id="welcome-copy">
+                                                        Consulta tus próximas carreras y organiza lo que
+                                                        viene.
+                                                    </p>
+                                                </div>
+                                                <img
+                                                    src="running-arequipa.webp"
+                                                    alt=""
+                                                    width="1280"
+                                                    height="853"
+                                                />
+                                            </div>
+                                            <div class="metrics" aria-label="Resumen de carreras">
+                                                <div>
+                                                    <span id="first-metric-label">Carreras publicadas</span
+                                                    ><strong class="race-count">0</strong>
+                                                </div>
+                                                <div>
+                                                    <span>Por disputarse</span
+                                                    ><strong class="race-count">0</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <section id="races-view" class="app-card" hidden>
+                                            <div class="empty-state" id="races-empty">
+                                                <span aria-hidden="true">◎</span
+                                                ><strong>Aún no hay carreras</strong>
+                                                <p id="races-empty-hint">
+                                                    Usa «Nueva carrera» para publicar la primera.
+                                                </p>
+                                            </div>
+                                            <ul id="sample-races" class="sample-list"></ul>
+                                        </section>
+                                        <section id="accounts-view" class="app-card" hidden>
+                                            <div class="demo-account">
+                                                <div>
+                                                    <strong>Organizador Minka</strong>
+                                                    <p>Cuenta de ejemplo</p>
+                                                </div>
+                                                <span class="tag">Organizador</span>
+                                            </div>
+                                            <div class="demo-account">
+                                                <div>
+                                                    <strong>Runner Minka</strong>
+                                                    <p>Cuenta de ejemplo</p>
+                                                </div>
+                                                <span class="tag">Runner</span>
+                                            </div>
+                                        </section>
+                                        <div id="signed-out-view" class="app-card empty-state" hidden>
+                                            <strong>Sesión cerrada en la maqueta</strong>
+                                            <button
+                                                type="button"
+                                                class="button secondary"
+                                                id="reset-session"
+                                            >
+                                                Volver al panel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <nav
+                                    class="app-destinations app-tabs"
+                                    aria-label="Destinos de la aplicación"
+                                >
+                                    <button type="button" data-page="home" aria-current="page">
+                                        <span aria-hidden="true">◫</span><span>Inicio</span>
+                                    </button>
+                                    <button type="button" data-page="races">
+                                        <span aria-hidden="true">◎</span
+                                        ><span data-races-label>Mis carreras</span>
+                                    </button>
+                                    <button type="button" data-page="accounts" hidden>
+                                        <span aria-hidden="true">◉</span><span>Usuarios</span>
+                                    </button>
+                                </nav>
+                            </div>
+                            <p class="stage-caption" id="device-note">
+                                Sidebar lateral de 232 px · barra superior de 64 px
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="spec-grid nav-specs">
+                        <article class="spec">
+                            <h3>Web · Sidebar</h3>
+                            <p>
+                                Desde 1024 px, usa un sidebar de 232 px con marca y destinos. Entre 768 y
+                                1023 px, usa un rail de 72 px con iconos, nombre accesible y etiqueta al
+                                pasar o enfocar. Indica la ruta activa con forma y color.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Top nav · Una sola barra</h3>
+                            <p>
+                                Izquierda: título de la ruta. Derecha: una acción primaria contextual y el
+                                menú de cuenta. En detalles, coloca «Volver» junto al título en esa misma
+                                barra. El cierre de sesión vive en el menú de cuenta.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Mobile · Barra y tabs</h3>
+                            <p>
+                                Usa una barra de 56 más el área segura superior y tabs de 56 más el área
+                                segura inferior. Mantén dos a cinco destinos principales con icono y
+                                etiqueta. En un formulario de pantalla completa, oculta los tabs y muestra
+                                «Volver» en la barra superior.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Rutas y permisos</h3>
+                            <p>
+                                Inicio y carreras aparecen en los tres roles. Administración de usuarios
+                                solo para super administradores. «Nueva carrera» solo para organizadores y
+                                super administradores. El backend valida cada operación.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="layouts" aria-labelledby="layouts-heading">
+                    <h2 id="layouts-heading">Layouts y paneles</h2>
+                    <p class="lede">
+                        El shell aporta navegación y áreas seguras. Cada pantalla aporta su contenido y
+                        conserva un orden de lectura predecible.
+                    </p>
+                    <div class="spec-grid">
+                        <article class="spec layout-spec">
+                            <h3>Panel de inicio</h3>
+                            <p>
+                                Bienvenida → métricas → listado. Cada métrica corresponde a datos del rol.
+                                Si una fecha todavía no existe, muestra «Sin fecha».
+                            </p>
+                            <div class="wire">
+                                <i></i>
+                                <div><i></i><i></i><i></i></div>
+                                <i></i>
+                            </div>
+                        </article>
+                        <article class="spec layout-spec">
+                            <h3>Lista y formulario</h3>
+                            <p>
+                                Web: desde 1024 px, dos columnas cuando ambas alcanzan 320 px. Mobile: una
+                                columna y formulario en pantalla propia. Usa un máximo de 640 unidades para
+                                campos y botones.
+                            </p>
+                            <div class="wire wire-split"><i></i><i></i></div>
+                        </article>
+                        <article class="spec">
+                            <h3>Contenedor de panel</h3>
+                            <p>
+                                Usa título, contenido y una acción contextual cuando corresponda. Aplica
+                                superficie blanca, borde de 1 px, radio de 20 y relleno de 16 a 24. Lista,
+                                métricas y formularios comparten esta estructura.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Estados operativos</h3>
+                            <p>
+                                Reserva el espacio al cargar. Distingue cero resultados de un fallo de red y
+                                conserva datos previos al reintentar. Publicar muestra confirmación y
+                                actualiza el listado.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="componentes" aria-labelledby="components-heading">
+                    <h2 id="components-heading">Componentes y estados</h2>
+                    <p class="lede">
+                        Las variantes conservan nombres y comportamiento entre plataformas. Cada control
+                        admite foco, teclado y lector de pantalla.
+                    </p>
+                    <div class="component-board">
+                        <article class="sample">
+                            <h3>Button</h3>
+                            <div class="sample-row">
+                                <button
+                                    type="button"
+                                    class="button primary"
+                                    data-example="Acción primaria seleccionada."
+                                >
+                                    Publicar</button
+                                ><button
+                                    type="button"
+                                    class="button secondary"
+                                    data-example="Acción secundaria seleccionada."
+                                >
+                                    Cancelar</button
+                                ><button type="button" class="button secondary" disabled>
+                                    No disponible
+                                </button>
+                            </div>
+                            <p id="button-feedback" class="sample-feedback" aria-live="polite" hidden></p>
+                            <p>
+                                Un botón primario por decisión. Mantén la etiqueta mientras envía y evita
+                                envíos repetidos.
+                            </p>
+                        </article>
+                        <article class="sample">
+                            <h3>Input</h3>
+                            <label for="example-input">Nombre de la carrera</label
+                            ><input
+                                id="example-input"
+                                placeholder="Ej. Carrera del Misti 10K"
+                                aria-describedby="example-hint"
+                            />
+                            <p id="example-hint">
+                                Etiqueta visible, ayuda debajo y error vinculado al campo.
+                            </p>
+                        </article>
+                        <article class="sample">
+                            <h3>PasswordInput</h3>
+                            <label for="example-password">Contraseña de ejemplo</label>
+                            <div class="password-field">
+                                <input
+                                    id="example-password"
+                                    type="password"
+                                    autocomplete="off"
+                                    placeholder="Escribe para probar"
+                                /><button
+                                    type="button"
+                                    id="toggle-password"
+                                    aria-controls="example-password"
+                                >
+                                    Mostrar
+                                </button>
+                            </div>
+                            <p>El botón conserva el foco al cambiar la visibilidad.</p>
+                        </article>
+                        <article class="sample">
+                            <h3>Estado y feedback</h3>
+                            <div class="sample-row">
+                                <span class="status success">Publicada</span
+                                ><span class="status warning">Borrador</span
+                                ><span class="status danger">Cancelada</span>
+                            </div>
+                            <p>
+                                Usa texto además del color. Anuncia confirmaciones de forma discreta y
+                                comunica los errores junto al campo o panel.
+                            </p>
+                        </article>
+                    </div>
+                    <article class="sample panel-demo">
+                        <div class="panel-demo-header">
+                            <h3>Panel de carreras</h3>
+                            <div class="role-control">
+                                <label for="panel-status">Estado del panel</label>
+                                <select id="panel-status">
+                                    <option value="empty">Vacío</option>
+                                    <option value="loading">Cargando</option>
+                                    <option value="error">Error</option>
+                                    <option value="ready">Con datos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="panel-example" aria-live="polite">
+                            <div class="empty-state" data-panel="empty">
+                                <strong>Aún no hay carreras</strong>
+                                <p>Publica la primera desde «Nueva carrera».</p>
+                            </div>
+                            <div class="skeleton" data-panel="loading" hidden>
+                                <p>Cargando carreras…</p>
+                                <span></span><span></span>
+                            </div>
+                            <div class="panel-error" data-panel="error" hidden>
+                                <strong>No se pudieron cargar las carreras.</strong>
+                                <p>Comprueba tu conexión e inténtalo de nuevo.</p>
+                                <button type="button" class="button secondary" id="retry-panel">
+                                    Reintentar
+                                </button>
+                            </div>
+                            <div class="demo-account" data-panel="ready" hidden>
+                                <div>
+                                    <strong>Carrera del Misti 10K</strong>
+                                    <p>Arequipa · 20 de marzo</p>
+                                </div>
+                                <span class="status success">Publicada</span>
+                            </div>
+                        </div>
+                    </article>
+                    <aside class="note">
+                        <strong>Accesibilidad compartida</strong>
+                        <p>
+                            Objetivos táctiles de 48 × 48. Contraste de 4.5:1 para texto normal. Foco
+                            visible, texto ampliable y áreas seguras. Los iconos de acción siempre tienen
+                            nombre accesible.
+                        </p>
+                    </aside>
+                </section>
+
+                <section class="doc-section" id="storybook" aria-labelledby="stories-heading">
+                    <h2 id="stories-heading">Storybook de Web y Mobile</h2>
+                    <p class="lede">
+                        El HTML fija el comportamiento visual. Las historias comprueban los componentes
+                        reales en cada plataforma con los mismos nombres y escenarios.
+                    </p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Historia</th>
+                                    <th scope="col">Escenarios compartidos</th>
+                                    <th scope="col">Catálogo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Button</th>
+                                    <td>Primary, Secondary, Outline, Disabled, Loading</td>
+                                    <td>Existe en ambos</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Input / PasswordInput</th>
+                                    <td>Default, Hint, Error, Disabled, PasswordVisible</td>
+                                    <td>Existe en ambos</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sidebar / TopBar / TabBar</th>
+                                    <td>Organizer, Runner, SuperAdmin, Active, LongLabel</td>
+                                    <td>Por incorporar</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Panel / RaceList / Form</th>
+                                    <td>Default, Empty, Loading, Error, Populated</td>
+                                    <td>Por incorporar</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="spec-grid">
+                        <article class="spec">
+                            <h3>Web</h3>
+                            <p>
+                                En <code>minka-web</code>, ejecuta <code>npm run storybook</code>. Revisa
+                                los ejemplos de 390, 768, 1024 y 1440 px, navegación con teclado y foco
+                                visible.
+                            </p>
+                        </article>
+                        <article class="spec">
+                            <h3>Mobile</h3>
+                            <p>
+                                En <code>minka-mobile</code>, ejecuta <code>npm run storybook</code> y abre
+                                la app de desarrollo. Revisa Android e iOS, áreas seguras, texto grande y
+                                teclado abierto.
+                            </p>
+                        </article>
+                    </div>
+                    <aside class="note">
+                        <strong>Al cambiar un componente</strong>
+                        <p>
+                            Actualiza su ejemplo y tokens en este HTML, crea o ajusta la historia
+                            equivalente en cada catálogo y verifica el layout real con los tres roles. Usa
+                            datos ficticios en las historias.
+                        </p>
+                    </aside>
+                </section>
+            </main>
+        </div>
+
+        <dialog id="race-dialog" aria-labelledby="dialog-title">
+            <form id="sample-form">
+                <header>
+                    <div>
+                        <h2 id="dialog-title">Nueva carrera</h2>
+                        <p>Los datos se usan solo en esta maqueta.</p>
+                    </div>
+                    <button class="button secondary" type="button" id="close-dialog">Volver</button>
+                </header>
+                <label for="demo-race-name">Nombre de la carrera</label>
+                <input id="demo-race-name" name="name" maxlength="120" required autofocus />
+                <label for="demo-race-city">Ciudad</label>
+                <input id="demo-race-city" name="city" maxlength="100" required />
+                <button class="button primary" type="submit">Añadir a la maqueta</button>
+            </form>
+        </dialog>
+    </body>
+</html>
