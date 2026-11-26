@@ -109,6 +109,7 @@ function renderRole() {
     select('first-metric-label').textContent =
         role === 'runner' ? 'Eventos disponibles' : 'Eventos publicados';
     select('races-empty-hint').hidden = role === 'runner';
+    select('preview-organizer-profile').hidden = role !== 'organizer';
 
     for (const label of preview.querySelectorAll('[data-races-label]')) {
         label.textContent = details.races;

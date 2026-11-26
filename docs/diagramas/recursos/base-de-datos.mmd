@@ -39,10 +39,13 @@ erDiagram
         uuid id PK
         varchar title
         varchar sport
-        varchar modality "opcional"
+        varchar modality "compatibilidad"
+        jsonb modalities "horarios, lugares, categorías y Garmin"
         text description "opcional"
         timestamp date
+        timestamptz endDate "opcional"
         varchar location "opcional"
+        varchar finishLocation "opcional"
         varchar city "opcional"
         events_status_enum status
         varchar organizerId "opcional"

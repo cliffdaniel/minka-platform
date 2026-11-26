@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es-PE">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Criterios verificables para que la navegación, los formularios y los resultados funcionen con teclado, toque y tecnologías de asistencia."
+        />
+        <title>Accesibilidad y contenido · Sistema de diseño Minka</title>
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="design-system.css" />
+        <link rel="stylesheet" href="reference.css" />
+    </head>
+    <body>
+        <a class="skip" href="#contenido">Ir al contenido</a>
+        <header class="site-header reference-site">
+            <div class="site-inner">
+                <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span> Minka</a>
+                <nav class="reference-nav" aria-label="Capítulos del sistema de diseño">
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#navegacion">Navegación</a>
+                    <a href="fundamentos.html">Fundamentos</a>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="patrones.html">Patrones</a>
+                    <a href="accesibilidad.html" aria-current="page">Accesibilidad</a>
+                    <a href="equipo.html">Equipo</a>
+                </nav>
+            </div>
+        </header>
+        <main class="reference" id="contenido" tabindex="-1">
+            <header class="intro">
+                <h1>Accesibilidad y contenido</h1>
+                <p>
+                    Criterios verificables para que la navegación, los formularios y los resultados
+                    funcionen con teclado, toque y tecnologías de asistencia.
+                </p>
+            </header>
+            <nav class="chapter-bar" aria-label="Temas de accesibilidad">
+                <a href="#teclado">Foco y teclado</a><a href="#lectura">Lectura y contraste</a
+                ><a href="#contenido-ui">Contenido de interfaz</a><a href="#verificacion">Verificación</a>
+            </nav>
+
+            <section class="doc-section" id="teclado">
+                <h2>Foco, teclado y gesto</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Navegación y menú de cuenta</h3>
+                        <p>
+                            Tab recorre marca, destinos, barra superior y contenido en orden. La ruta activa
+                            se anuncia como página o tab seleccionado. Al cerrar el menú con Escape, el foco
+                            vuelve al avatar.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Diálogo y pantalla completa</h3>
+                        <p>
+                            El foco entra al diálogo, permanece dentro y vuelve al activador al cerrar.
+                            Ofrece un cierre claro. En Android y iOS verifica también Volver del sistema o
+                            el gesto de regreso en pantallas de detalle.
+                        </p>
+                        <p>
+                            <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+                                >Patrón de diálogo modal de WAI</a
+                            >
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Formularios largos</h3>
+                        <p>
+                            Usa etiquetas visibles y nombres únicos. Al fallar el envío, conserva lo
+                            ingresado, anuncia el resumen y lleva a los campos con error. El teclado y las
+                            barras fijas dejan espacio para desplazar el control enfocado.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Acciones y estados</h3>
+                        <p>
+                            El foco contrastado se conserva sobre fondos claros. Los botones mantienen su
+                            etiqueta durante la carga, indican que están ocupados y evitan envíos repetidos.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="doc-section" id="lectura">
+                <h2>Lectura, contraste y tamaño</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Contraste</h3>
+                        <p>
+                            Objetivo de 4.5:1 en texto normal y 3:1 en texto grande y partes visuales
+                            necesarias de los controles. Verifica los pares reales en cada estado. Usa texto
+                            o forma además de color.
+                        </p>
+                        <p>
+                            <a href="https://www.w3.org/TR/WCAG22/#distinguishable"
+                                >WCAG 2.2 · Contenido distinguible</a
+                            >
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Texto ampliable y toque</h3>
+                        <p>
+                            En Web revisa texto al 200 % y una vista de 320 px sin scroll horizontal de
+                            página. En Mobile conserva el tamaño de texto del sistema, áreas seguras y
+                            objetivos de 48 unidades.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Lector de pantalla</h3>
+                        <p>
+                            Usa encabezados, regiones y listas reales. Anuncia el estado de carga, la
+                            confirmación de guardado y errores contextualizados. Las categorías y la ruta
+                            deben quedar disponibles al expandir una modalidad.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Iconos, imágenes y movimiento</h3>
+                        <p>
+                            Da nombre a un botón con icono y marca como decorativo el icono junto a su
+                            etiqueta. Respeta movimiento reducido y usa el mismo orden con animaciones
+                            desactivadas.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="doc-section" id="contenido-ui">
+                <h2>Contenido de interfaz</h2>
+                <p class="lede">
+                    Usa español de Perú y verbos concretos. Las etiquetas nombran la acción o el dato. La
+                    ayuda explica cómo completar el campo.
+                </p>
+                <div class="table-wrap">
+                    <table class="reference-table">
+                        <caption>
+                            Mensajes reutilizables
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Situación</th>
+                                <th scope="col">Ejemplo</th>
+                                <th scope="col">Ubicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Acción principal</th>
+                                <td>Publicar evento</td>
+                                <td>Botón al final del formulario.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Error corregible</th>
+                                <td>El fin del evento debe ser posterior a su inicio.</td>
+                                <td>Junto al horario y en el resumen de envío.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Vacío</th>
+                                <td>Aún no hay eventos.</td>
+                                <td>En el panel, con acción opcional para el rol.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Error de red</th>
+                                <td>No pudimos cargar los eventos. Reintentar.</td>
+                                <td>En el panel afectado. Conserva los datos previos.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Confirmación</th>
+                                <td>Perfil guardado.</td>
+                                <td>Anuncio discreto junto al resultado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <aside class="note">
+                    <strong>Fechas, hora y enlaces</strong>
+                    <p>
+                        Muestra fecha y hora de Perú cuando el evento tenga programación local. Etiqueta por
+                        separado Fecha de inicio y Hora de inicio. Identifica rutas externas como «Ver ruta
+                        en Garmin Connect».
+                    </p>
+                </aside>
+            </section>
+
+            <section class="doc-section" id="verificacion">
+                <h2>Verificación por superficie</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Web</h3>
+                        <ul class="rule-list">
+                            <li>Recorre con Tab, Shift + Tab y Escape.</li>
+                            <li>Prueba a 320, 390, 768, 1024 y 1440 px, con zoom y texto largo.</li>
+                            <li>Comprueba una vez con lector de pantalla y movimiento reducido.</li>
+                        </ul>
+                    </article>
+                    <article class="spec">
+                        <h3>Android e iOS</h3>
+                        <ul class="rule-list">
+                            <li>Revisa TalkBack o VoiceOver, texto grande y controles de toque.</li>
+                            <li>
+                                Abre teclado y galería, y vuelve a la pantalla previa sin perder la
+                                selección.
+                            </li>
+                            <li>
+                                Prueba espacios seguros y contenido largo en los dos tamaños de orientación.
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

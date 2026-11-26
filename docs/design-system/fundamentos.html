@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es-PE">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="La identidad clara de Minka y las reglas compartidas para construir superficies, interfaces y estados coherentes."
+        />
+        <title>Fundamentos visuales · Sistema de diseño Minka</title>
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="design-system.css" />
+        <link rel="stylesheet" href="reference.css" />
+    </head>
+    <body>
+        <a class="skip" href="#contenido">Ir al contenido</a>
+        <header class="site-header reference-site">
+            <div class="site-inner">
+                <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span> Minka</a>
+                <nav class="reference-nav" aria-label="Capítulos del sistema de diseño">
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#navegacion">Navegación</a>
+                    <a href="fundamentos.html" aria-current="page">Fundamentos</a>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="patrones.html">Patrones</a>
+                    <a href="accesibilidad.html">Accesibilidad</a>
+                    <a href="equipo.html">Equipo</a>
+                </nav>
+            </div>
+        </header>
+        <main class="reference" id="contenido" tabindex="-1">
+            <header class="intro">
+                <h1>Fundamentos visuales</h1>
+                <p>
+                    La identidad clara de Minka y las reglas compartidas para construir superficies,
+                    interfaces y estados coherentes.
+                </p>
+            </header>
+            <nav class="chapter-bar" aria-label="Temas de fundamentos">
+                <a href="#color">Color y contraste</a><a href="#tipografia">Tipografía</a
+                ><a href="#espaciado">Espaciado</a><a href="#composicion">Composición</a
+                ><a href="#iconos">Iconos y fotografía</a>
+            </nav>
+
+            <section class="doc-section" id="color">
+                <h2>Color y contraste</h2>
+                <p class="lede">
+                    El lienzo separa el contenido, las superficies blancas contienen tareas y el verde
+                    identifica acciones. Los estados siempre incluyen texto legible.
+                </p>
+                <div class="token-grid">
+                    <div class="token-card">
+                        <span class="token-preview" style="background: var(--surface)">Aa</span
+                        ><strong>Superficie</strong><code>--surface · #FFFFFF</code>
+                    </div>
+                    <div class="token-card">
+                        <span class="token-preview" style="background: var(--canvas)">Aa</span
+                        ><strong>Lienzo</strong><code>--canvas · #F7F8F5</code>
+                    </div>
+                    <div class="token-card">
+                        <span class="token-preview" style="background: var(--surface-subtle)">Aa</span
+                        ><strong>Selección</strong><code>--surface-subtle · #EFF3EB</code>
+                    </div>
+                    <div class="token-card">
+                        <span class="token-preview" style="background: var(--brand); color: #fff">Aa</span
+                        ><strong>Acción primaria</strong><code>--brand · #265846</code>
+                    </div>
+                    <div class="token-card">
+                        <span
+                            class="token-preview"
+                            style="background: var(--success-bg); color: var(--success)"
+                            >Guardado</span
+                        ><strong>Éxito</strong><code>--success / --success-bg</code>
+                    </div>
+                    <div class="token-card">
+                        <span
+                            class="token-preview"
+                            style="background: var(--warning-bg); color: var(--warning)"
+                            >Pendiente</span
+                        ><strong>Advertencia</strong><code>--warning / --warning-bg</code>
+                    </div>
+                    <div class="token-card">
+                        <span
+                            class="token-preview"
+                            style="background: var(--danger-bg); color: var(--danger)"
+                            >Error</span
+                        ><strong>Error</strong><code>--danger / --danger-bg</code>
+                    </div>
+                    <div class="token-card">
+                        <span class="token-preview" style="background: var(--info-bg); color: var(--info)"
+                            >Información</span
+                        ><strong>Información</strong><code>--info / --info-bg</code>
+                    </div>
+                </div>
+                <div class="spec-grid nav-specs">
+                    <article class="spec">
+                        <h3>Texto y bordes</h3>
+                        <p>
+                            <code>--ink</code> para contenido principal y <code>--muted</code> para ayuda y
+                            metadatos. Usa <code>--border</code> en divisores y
+                            <code>--border-strong</code> en controles interactivos.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Archivos de tokens</h3>
+                        <p>
+                            Usa los nombres semánticos en vez de repetir valores hexadecimales. Los números
+                            del JSON se interpretan como píxeles CSS en Web y unidades lógicas en Mobile.
+                        </p>
+                        <p>
+                            <a href="tokens.css" download>CSS</a> · <a href="tokens.json" download>JSON</a>
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="doc-section" id="tipografia">
+                <h2>Tipografía</h2>
+                <p class="lede">
+                    Geist en Web y la fuente del sistema en Android e iOS. El peso y el tamaño distinguen el
+                    título principal, los paneles, los controles y la información de apoyo.
+                </p>
+                <div class="spec type-list">
+                    <div>
+                        <small>Bienvenida · 32–48 / 1.08 · 750+</small
+                        ><span class="display-text">Encuentra tu próximo evento</span>
+                    </div>
+                    <div>
+                        <small>Sección · 20–24 / 1.2 · 700</small
+                        ><span class="heading-text">Mis eventos</span>
+                    </div>
+                    <div>
+                        <small>Cuerpo · 16 / 1.5 · 400</small
+                        ><span>Consulta los horarios y rutas de cada modalidad.</span>
+                    </div>
+                    <div>
+                        <small>Etiqueta · 14 / 1.4 · 650</small
+                        ><span class="label-text">Lugar de inicio</span>
+                    </div>
+                    <div>
+                        <small>Soporte · 12–13 / 1.4 · 400</small
+                        ><small>Los horarios se muestran en hora de Perú.</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="doc-section" id="espaciado">
+                <h2>Espaciado, bordes y movimiento</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Escala de espacios</h3>
+                        <p>
+                            4–8 para icono y etiqueta, 12–16 entre campos, 20–24 dentro del panel y 32–48
+                            entre secciones.
+                        </p>
+                        <ul class="space-list" aria-label="Escala en unidades lógicas">
+                            <li><i style="--size: 4px"></i>4</li>
+                            <li><i style="--size: 8px"></i>8</li>
+                            <li><i style="--size: 12px"></i>12</li>
+                            <li><i style="--size: 16px"></i>16</li>
+                            <li><i style="--size: 24px"></i>24</li>
+                            <li><i style="--size: 32px"></i>32</li>
+                            <li><i style="--size: 48px"></i>48</li>
+                        </ul>
+                    </article>
+                    <article class="spec">
+                        <h3>Radios y niveles</h3>
+                        <p>
+                            Radio 12 en controles, 20 en paneles y 28 en bienvenida. Usa borde en
+                            superficies normales y sombra en elementos flotantes.
+                        </p>
+                        <div class="size-samples" aria-label="Muestras de radios">
+                            <span><b style="border-radius: var(--radius-field)"></b>12</span
+                            ><span><b style="border-radius: var(--radius-panel)"></b>20</span
+                            ><span><b style="border-radius: var(--radius-hero)"></b>28</span>
+                        </div>
+                    </article>
+                    <article class="spec">
+                        <h3>Movimiento</h3>
+                        <p>
+                            140 ms para foco, selección o presión. Hasta 220 ms para menú o panel. Con
+                            movimiento reducido, cambia el estado de inmediato y conserva el foco.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Densidad</h3>
+                        <p>
+                            Los objetivos de toque usan 48 × 48. En listados con contenido variable, deja
+                            que la fila crezca. Las columnas de datos pueden desplazarse dentro de su panel.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="doc-section" id="composicion">
+                <h2>Composición adaptable</h2>
+                <p class="lede">
+                    Usa una columna base. Aumenta el número de columnas cuando títulos, controles y mensajes
+                    tengan espacio suficiente.
+                </p>
+                <div class="spec">
+                    <div class="layout-ruler" aria-hidden="true">
+                        <div>
+                            <strong>Compacta</strong>
+                            <div class="ruler ruler-narrow"><span></span><span></span><span></span></div>
+                        </div>
+                        <div>
+                            <strong>Intermedia</strong>
+                            <div class="ruler ruler-wide">
+                                <span></span>
+                                <div class="ruler-section"><span></span><span></span></div>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>Amplia</strong>
+                            <div class="ruler ruler-wide">
+                                <span></span>
+                                <div class="ruler-section"><span></span><span></span><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-wrap nav-specs">
+                    <table class="reference-table">
+                        <caption>
+                            Reglas prácticas de layout
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Ancho</th>
+                                <th scope="col">Navegación</th>
+                                <th scope="col">Contenido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">320–767 px</th>
+                                <td>Barra de 56 y tabs de 56</td>
+                                <td>
+                                    Una columna, margen lateral 16, formularios extensos en pantalla propia.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">768–1023 px</th>
+                                <td>Rail de 72 y barra de 64</td>
+                                <td>Una o dos columnas de lectura. Respeta 320 px por panel de trabajo.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Desde 1024 px</th>
+                                <td>Sidebar de 232 y barra de 64</td>
+                                <td>
+                                    Dos columnas cuando ambas alcancen 320 px. Usa 24–32 de margen interior.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Android e iOS</th>
+                                <td>Barra y tabs dentro de áreas seguras</td>
+                                <td>
+                                    Contenido centrado con máximo de 640 unidades y scroll independiente.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="doc-section" id="iconos">
+                <h2>Iconos y fotografía</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Iconografía</h3>
+                        <p>
+                            16 px junto a metadatos, 20 px para navegación y 24 px para acciones
+                            principales. Mantén silueta y peso consistentes. Combina icono y texto en
+                            destinos y pon nombre accesible a iconos de acción.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Imágenes</h3>
+                        <p>
+                            Usa fotografía deportiva con luz natural y contexto local. Conserva la cara o
+                            acción principal al recortar. Para logos usa proporción conservada y una
+                            alternativa de iniciales. Las imágenes decorativas llevan texto alternativo
+                            vacío.
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

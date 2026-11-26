@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es-PE">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Componentes, estados y ejemplos interactivos para mantener el mismo comportamiento en Web y Mobile."
+        />
+        <title>Catálogo de componentes · Sistema de diseño Minka</title>
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="design-system.css" />
+        <link rel="stylesheet" href="reference.css" />
+        <script src="catalogo.js" defer></script>
+    </head>
+    <body>
+        <a class="skip" href="#contenido">Ir al contenido</a>
+        <header class="site-header reference-site">
+            <div class="site-inner">
+                <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span> Minka</a>
+                <nav class="reference-nav" aria-label="Capítulos del sistema de diseño">
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#navegacion">Navegación</a>
+                    <a href="fundamentos.html">Fundamentos</a>
+                    <a href="catalogo.html" aria-current="page">Catálogo</a>
+                    <a href="patrones.html">Patrones</a>
+                    <a href="accesibilidad.html">Accesibilidad</a>
+                    <a href="equipo.html">Equipo</a>
+                </nav>
+            </div>
+        </header>
+        <main class="reference" id="contenido" tabindex="-1">
+            <header class="intro">
+                <h1>Catálogo de componentes</h1>
+                <p>
+                    Componentes, estados y ejemplos interactivos para mantener el mismo comportamiento en
+                    Web y Mobile.
+                </p>
+            </header>
+            <nav class="chapter-bar" aria-label="Familias de componentes">
+                <a href="#acciones">Acciones</a><a href="#formulario">Formularios</a
+                ><a href="#navegacion">Navegación</a><a href="#datos">Datos y estados</a>
+            </nav>
+            <div class="catalogue-tools">
+                <label for="catalog-search">Buscar componente</label>
+                <input type="search" id="catalog-search" placeholder="Ej. botón, horario, error" />
+                <p class="catalogue-size" id="catalog-count" role="status"></p>
+            </div>
+            <p id="catalog-feedback" class="example-notice" role="status" hidden></p>
+            <section class="doc-section" id="acciones" data-collection>
+                <h2>Acciones</h2>
+                <div class="component-board">
+                    <article
+                        class="sample component-spec"
+                        data-component="boton primaria secundaria danger disabled loading"
+                    >
+                        <h3>Button</h3>
+                        <div class="specimen">
+                            <div class="sample-row">
+                                <button
+                                    class="button primary"
+                                    type="button"
+                                    data-feedback="Ejemplo de acción principal."
+                                >
+                                    Publicar</button
+                                ><button
+                                    class="button secondary"
+                                    type="button"
+                                    data-feedback="Ejemplo de acción secundaria."
+                                >
+                                    Cancelar</button
+                                ><button class="button secondary" type="button" disabled>
+                                    No disponible
+                                </button>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Acción principal, alternativa, deshabilitado y cargando.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Usa un primario por decisión. Durante el envío conserva el texto y evita
+                                pulsaciones repetidas.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="icono enlace link acciones secundarias"
+                    >
+                        <h3>IconButton y enlace</h3>
+                        <div class="specimen">
+                            <div class="sample-row">
+                                <button
+                                    class="button secondary"
+                                    type="button"
+                                    aria-label="Volver"
+                                    data-feedback="Ejemplo de volver."
+                                >
+                                    <span aria-hidden="true">←</span></button
+                                ><a class="text-link" href="patrones.html#publicacion"
+                                    >Ver publicación <span aria-hidden="true">↗</span></a
+                                >
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Icono con etiqueta accesible y enlace de navegación.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Un enlace cambia el destino. Un botón modifica el estado o inicia una
+                                acción.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="confirmacion dialog danger borrar retirar"
+                    >
+                        <h3>Confirmación destructiva</h3>
+                        <div class="specimen">
+                            <button class="button danger" id="catalog-open-dialog" type="button">
+                                Quitar logo
+                            </button>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Cancelar, confirmar y error.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Explica qué se quita y cuál es el efecto. Devuelve el foco al control que
+                                abrió el diálogo.
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
+            </section>
+            <section class="doc-section" id="formulario" data-collection>
+                <h2>Controles de formulario</h2>
+                <div class="component-board">
+                    <article
+                        class="sample component-spec"
+                        data-component="input campo texto error foco ayuda"
+                    >
+                        <h3>Input y validación</h3>
+                        <div class="specimen">
+                            <label for="catalog-name">Nombre del evento</label
+                            ><input
+                                id="catalog-name"
+                                aria-invalid="true"
+                                aria-describedby="catalog-error"
+                                placeholder="Ej. Backyard del Misti"
+                                required
+                            />
+                            <p class="invalid-copy" id="catalog-error">Ingresa el nombre del evento.</p>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacío, ayuda, foco, error, valor y deshabilitado.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Etiqueta visible, descripción asociada y error debajo del control. Conserva
+                                el valor cuando falle el envío.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="password contraseña visibilidad login"
+                    >
+                        <h3>PasswordInput</h3>
+                        <div class="specimen">
+                            <label for="catalog-password">Contraseña de ejemplo</label>
+                            <div class="password-field">
+                                <input
+                                    id="catalog-password"
+                                    type="password"
+                                    autocomplete="off"
+                                    placeholder="Escribe para probar"
+                                /><button
+                                    id="catalog-password-toggle"
+                                    type="button"
+                                    aria-controls="catalog-password"
+                                >
+                                    Mostrar
+                                </button>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Oculta, visible, error y deshabilitada.</dd>
+                            <dt>Uso</dt>
+                            <dd>El control de visibilidad conserva el foco y anuncia la acción actual.</dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="selector dropdown disciplina menu picker"
+                    >
+                        <h3>Select</h3>
+                        <div class="specimen">
+                            <label for="catalog-discipline">Disciplina</label
+                            ><select id="catalog-discipline">
+                                <option>Running</option>
+                                <option>Triatlón</option>
+                                <option>Ciclismo</option>
+                                <option>Natación</option>
+                            </select>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Inicial, seleccionado y deshabilitado.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Usa selector nativo si la lista es breve. Para Mobile conserva el valor al
+                                cerrar y marca la opción seleccionada.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="radio checkbox switch preferencia seleccion"
+                    >
+                        <h3>Radio, Checkbox y Switch</h3>
+                        <div class="specimen">
+                            <fieldset>
+                                <legend>Preferencias de ejemplo</legend>
+                                <label class="choice"
+                                    ><input type="radio" name="catalog-radio" checked /> Individual</label
+                                ><label class="choice"
+                                    ><input type="radio" name="catalog-radio" /> Por equipo</label
+                                ><label class="choice"
+                                    ><input type="checkbox" /> Aceptar el reglamento de muestra</label
+                                ><label class="choice"
+                                    ><input type="checkbox" role="switch" /> Mostrar recordatorios de
+                                    ejemplo</label
+                                >
+                            </fieldset>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Selección única, múltiple y cambio inmediato.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Radio elige una opción de un grupo, Checkbox elige valores independientes y
+                                Switch alterna una preferencia inmediata.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="textarea descripcion multilinea contador"
+                    >
+                        <h3>Textarea</h3>
+                        <div class="specimen">
+                            <label for="catalog-description">Descripción</label
+                            ><textarea
+                                rows="3"
+                                id="catalog-description"
+                                maxlength="800"
+                                aria-describedby="catalog-description-help"
+                                placeholder="Describe a tu organización"
+                            ></textarea>
+                            <p id="catalog-description-help">Hasta 800 caracteres.</p>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacía, con texto, ayuda, error y deshabilitada.</dd>
+                            <dt>Uso</dt>
+                            <dd>Permite escribir varias líneas y mantiene visible el límite aplicable.</dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="fecha hora autentica horario calendario time date"
+                    >
+                        <h3>Fecha y hora</h3>
+                        <div class="specimen">
+                            <div class="demo-field-grid">
+                                <label for="catalog-date"
+                                    >Fecha de inicio<input id="catalog-date" type="date" /></label
+                                ><label for="catalog-time"
+                                    >Hora de inicio<input id="catalog-time" type="time"
+                                /></label>
+                            </div>
+                            <p>Hora de Perú.</p>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacío, valor, incompleto e inválido.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Usa campos separados. Si se indica el fin, valida fecha y hora y comprueba
+                                que quede después del inicio.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="subir logo imagen foto archivo file"
+                    >
+                        <h3>Archivo y logo</h3>
+                        <div class="specimen">
+                            <label for="catalog-file">Logo de ejemplo</label
+                            ><input
+                                class="example-file"
+                                type="file"
+                                id="catalog-file"
+                                accept="image/png,image/jpeg"
+                                aria-describedby="catalog-file-help"
+                            />
+                            <p id="catalog-file-help">
+                                PNG o JPG de hasta 512 KB. La muestra queda en tu dispositivo.
+                            </p>
+                            <p id="catalog-file-status" role="status" hidden></p>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Sin archivo, seleccionado, inválido y retirado.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Muestra una previsualización. Permite cancelar, reemplazar o quitar sin
+                                perder los demás datos.
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
+            </section>
+            <section class="doc-section" id="navegacion" data-collection>
+                <h2>Navegación y orientación</h2>
+                <div class="component-board">
+                    <article
+                        class="sample component-spec"
+                        data-component="sidebar rail tabbar pestanas navigation topbar barra"
+                    >
+                        <h3>Sidebar, Rail y TabBar</h3>
+                        <div class="specimen">
+                            <a href="index.html#navegacion" class="button secondary"
+                                >Abrir prototipo por rol</a
+                            >
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Escritorio, tableta, móvil y ruta activa.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Mantén destinos principales estables. Diferencia selección con forma, texto
+                                y semántica. La edición a pantalla completa usa Volver.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="cuenta avatar topbar menu volver perfil"
+                    >
+                        <h3>TopBar y AccountMenu</h3>
+                        <div class="specimen">
+                            <div class="sample-row">
+                                <strong>Mis eventos</strong
+                                ><span class="example-avatar" aria-label="Avatar de Alex Minka">AM</span>
+                            </div>
+                            <details>
+                                <summary>Menú de la cuenta</summary>
+                                <a href="patrones.html#perfil">Perfil del organizador</a>
+                            </details>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Ruta raíz, detalle y menú abierto.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                La acción principal queda a la derecha. El menú contiene perfil y cierre de
+                                sesión según el rol.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="accordion details resumen expandir colapsar modal"
+                    >
+                        <h3>Disclosure</h3>
+                        <div class="specimen">
+                            <details>
+                                <summary>Ver modalidades (2)</summary>
+                                <p>Backyard · 07:00</p>
+                                <p>10K · 09:30</p>
+                            </details>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Colapsado y expandido.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Expande contenido de la misma pantalla. Si requiere su propio historial de
+                                navegación, usa una ruta de detalle.
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
+            </section>
+            <section class="doc-section" id="datos" data-collection>
+                <h2>Datos y retroalimentación</h2>
+                <div class="component-board">
+                    <article
+                        class="sample component-spec"
+                        data-component="avatar logo iniciales perfil imagen"
+                    >
+                        <h3>Avatar</h3>
+                        <div class="specimen">
+                            <div class="sample-row">
+                                <span class="example-avatar" aria-label="Alex Minka">AM</span>
+                                <div>
+                                    <strong>Alex Minka</strong>
+                                    <p>Organizador</p>
+                                </div>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Foto, logo, iniciales y sin imagen.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Si aparece junto al nombre, marca la imagen decorativa para evitar una
+                                lectura repetida.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="badge chip tag estado success status draft"
+                    >
+                        <h3>Tag y estado</h3>
+                        <div class="specimen">
+                            <div class="sample-row">
+                                <span class="status success">Publicado</span
+                                ><span class="status warning">Borrador</span
+                                ><span class="status danger">Cancelado</span>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Publicado, borrador, terminado y cancelado.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                El chip describe un estado. Para cambiar una selección usa Radio, Checkbox o
+                                un botón real.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="panel card dashboard metric contador"
+                    >
+                        <h3>Panel y métricas</h3>
+                        <div class="specimen">
+                            <div class="metrics">
+                                <div><span>Eventos publicados</span><strong>8</strong></div>
+                                <div><span>Por disputarse</span><strong>3</strong></div>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacío, carga, error y con datos.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Usa métricas del backend, con contexto y unidad. Conserva un tamaño
+                                razonablemente estable al cargar.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="lista tabla table data resultados"
+                    >
+                        <h3>Lista y tabla</h3>
+                        <div class="specimen">
+                            <div class="table-wrap">
+                                <table class="example-table">
+                                    <caption>
+                                        Modalidades de ejemplo
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Modalidad</th>
+                                            <th scope="col">Salida</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Backyard</th>
+                                            <td>07:00</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">10K</th>
+                                            <td>09:30</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacía, filtrada y con datos.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Usa tabla para comparar columnas. En móvil limita el scroll al panel o
+                                convierte cada fila en tarjeta con las mismas etiquetas.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="feedback alerta aviso error toast notificacion"
+                    >
+                        <h3>Aviso, error y confirmación</h3>
+                        <div class="specimen">
+                            <div class="example-notice success">Perfil guardado.</div>
+                            <div class="example-notice error">
+                                No pudimos cargar los eventos. Reintentar.
+                            </div>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Información, advertencia, error recuperable y éxito.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Coloca la corrección cerca de la tarea. Anuncia confirmaciones en un estado
+                                en vivo y evita depender de avisos que desaparezcan.
+                            </dd>
+                        </dl>
+                    </article>
+                    <article
+                        class="sample component-spec"
+                        data-component="skeleton loading empty error retry espera"
+                    >
+                        <h3>Vacío, carga y reintento</h3>
+                        <div class="specimen">
+                            <div class="empty-state">
+                                <strong>Aún no hay eventos</strong>
+                                <p>El panel muestra aquí los eventos del rol.</p>
+                            </div>
+                            <a href="index.html#componentes" class="text-link">Probar estados del panel</a>
+                        </div>
+                        <dl class="facts">
+                            <dt>Estados</dt>
+                            <dd>Vacío, carga inicial, error sin datos y reintento con datos previos.</dd>
+                            <dt>Uso</dt>
+                            <dd>
+                                Separa una búsqueda sin resultados de un fallo de red. Si hay datos previos,
+                                mantenlos durante el reintento.
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
+            </section>
+            <dialog id="catalog-dialog" aria-labelledby="catalog-dialog-heading">
+                <form method="dialog">
+                    <header>
+                        <div>
+                            <h2 id="catalog-dialog-heading">Quitar logo</h2>
+                            <p>Esta es una confirmación de ejemplo.</p>
+                        </div>
+                    </header>
+                    <div class="sample-row">
+                        <button type="submit" value="cancel" class="button secondary" autofocus>
+                            Cancelar</button
+                        ><button type="submit" value="remove" class="button danger">
+                            Quitar logo de ejemplo
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+        </main>
+    </body>
+</html>
