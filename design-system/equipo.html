@@ -85,52 +85,47 @@
                         <h3>Web</h3>
                         <p>
                             En <code>minka-web</code>, ejecuta <code>npm run storybook</code>. Prueba la
-                            navegación con teclado y las ventanas compacta, intermedia y amplia.
+                            navegación con teclado y los tamaños de 390, 768 y 1440 px. Usa <code>npm run build-storybook</code> para generar una copia estática.
                         </p>
                     </article>
                     <article class="spec">
                         <h3>Mobile</h3>
                         <p>
                             En <code>minka-mobile</code>, ejecuta <code>npm run storybook</code> y abre la
-                            app de desarrollo. Revisa interacción táctil, tamaños de texto, cambios de
+                            app de desarrollo con <code>npm run android</code> o <code>npm run ios</code>. Revisa interacción táctil, tamaños de texto, cambios de
                             orientación y teclado.
                         </p>
                     </article>
                 </div>
                 <div class="table-wrap nav-specs">
                     <table class="reference-table">
-                        <caption>
-                            Historias y escenarios
-                        </caption>
+                        <caption>Atomic Design en ambos catálogos</caption>
                         <thead>
-                            <tr>
-                                <th scope="col">Ruta</th>
-                                <th scope="col">Escenarios</th>
-                            </tr>
+                            <tr><th scope="col">Nivel</th><th scope="col">Qué revisar</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Components/Button</th>
-                                <td>Primary, Secondary, Outline, Disabled, Loading</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Components/Input y Password Input</th>
-                                <td>Default, WithHint, WithError, Disabled, PasswordVisible</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Minka/Navigation/Shell</th>
-                                <td>Organizer, Runner, SuperAdmin, Active, LongLabel, Detail</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Minka/Panels/Home, EventList y EventForm</th>
-                                <td>
-                                    Bienvenida, lista vacía, carga, error, datos activos y formulario
-                                    poblado.
-                                </td>
-                            </tr>
+                            <tr><th scope="row">Fundamentos</th><td>Paleta semántica y escala tipográfica de cada plataforma.</td></tr>
+                            <tr><th scope="row">Átomos</th><td>Botones y campos de texto con variantes, ayuda, error, carga y controles deshabilitados.</td></tr>
+                            <tr><th scope="row">Moléculas</th><td>Contraseña, menú de cuenta, panel, calendario, selector de hora, programa y enlaces Garmin. Selector autocompletable con búsqueda local y remota paginada. Mobile también muestra el logo aislado.</td></tr>
+                            <tr><th scope="row">Organismos</th><td>Barras de navegación, bienvenida, resumen, panel y formulario de eventos, perfil del organizador. Web incluye barra lateral expandida y compacta.</td></tr>
+                            <tr><th scope="row">Plantillas</th><td>Dashboard con navegación por rol, título largo y vista de detalle.</td></tr>
+                            <tr><th scope="row">Páginas</th><td>Acceso y registro runner, inicio por rol, eventos, nuevo evento, usuarios y perfil.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p>
+                    Revisa primero el estado aislado y luego la página con contenido realista. Los controles
+                    de Web permiten alternar tamaños de pantalla, ejecutar las historias de interacción y
+                    revisar el panel de accesibilidad. En Mobile usa los controles y prueba gestos, VoiceOver
+                    o TalkBack y texto ampliado en el dispositivo.
+                </p>
+                <p>
+                    Para una lista remota, implementa <code>loadOptions</code> con los parámetros
+                    <code>query</code>, <code>cursor</code> y <code>signal</code>. Devuelve
+                    <code>options</code> y el <code>nextCursor</code> cuando queden resultados.
+                    Las historias simulan esa respuesta para revisar espera, error y carga adicional.
+                </p>
+                <p><a href="https://atomicdesign.bradfrost.com/chapter-2/">Metodología Atomic Design de Brad Frost</a></p>
             </section>
 
             <section class="doc-section" id="adopcion">
@@ -195,6 +190,10 @@
             <section class="doc-section" id="cambios">
                 <h2>Versiones</h2>
                 <div class="spec-grid">
+                    <article class="spec">
+                        <h3>v0.3 · Storybook por Atomic Design</h3>
+                        <p>Historias de piezas, plantillas y páginas en Web y Mobile con datos de demostración y escenarios por rol.</p>
+                    </article>
                     <article class="spec">
                         <h3>v0.2 · Biblioteca ampliada</h3>
                         <p>

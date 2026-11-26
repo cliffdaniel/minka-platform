@@ -16,7 +16,11 @@ const named = (scope, key) => scope.querySelector(`[name="${key}"]`);
 const read = (scope, key) => named(scope, key).value.trim();
 
 function setValues(scope, values) {
-    for (const [key, value] of Object.entries(values)) named(scope, key).value = value;
+    for (const [key, value] of Object.entries(values)) {
+        const field = named(scope, key);
+        field.value = value;
+        if (field instanceof HTMLSelectElement) field.dispatchEvent(new Event('change'));
+    }
 }
 
 function refreshModalityLabels() {

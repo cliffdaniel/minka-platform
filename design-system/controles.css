@@ -1,0 +1,126 @@
+.minka-select {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    gap: 6px;
+}
+
+.minka-select > label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.minka-select-input {
+    display: flex;
+    min-height: 48px;
+    align-items: stretch;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: var(--field);
+}
+
+.minka-select-input:focus-within {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+.minka-select-input input {
+    min-width: 0;
+    width: 100%;
+    padding: 0 0 0 14px;
+    outline: none;
+    font-size: 0.875rem;
+}
+
+.minka-select-input input::placeholder {
+    color: var(--muted);
+}
+
+.minka-select-input button {
+    display: grid;
+    width: 48px;
+    flex: 0 0 48px;
+    place-items: center;
+    color: var(--brand);
+}
+
+.minka-chevron {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.minka-select-input:has(input[aria-expanded="true"]) .minka-chevron {
+    transform: translateY(2px) rotate(225deg);
+}
+
+.minka-select-popup {
+    position: absolute;
+    z-index: 5;
+    inset: calc(100% + 6px) 0 auto;
+    display: grid;
+    gap: 4px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 12px 32px #192d2526;
+}
+
+.minka-select-popup ul {
+    max-height: 16rem;
+    overflow: auto;
+}
+
+.minka-select-popup :is(li, button, p) {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.minka-select-popup :is(li, button) { cursor: pointer; }
+.minka-select-popup li:is(:hover, .minka-select-active, [aria-selected="true"]) { background: #eaf3e9; }
+.minka-select-popup button { color: var(--brand); font-weight: 650; }
+
+.minka-schedule-field { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 6px; }
+.minka-picker-trigger { display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface); color: var(--brand); }
+.minka-calendar-icon, .minka-clock-icon { position: relative; width: 18px; height: 18px; border: 2px solid currentColor; }
+.minka-calendar-icon { border-radius: 4px; }
+.minka-calendar-icon::after { position: absolute; top: 4px; right: 0; left: 0; border-top: 2px solid currentColor; content: ''; }
+.minka-clock-icon { border-radius: 50%; }
+.minka-clock-icon::after { position: absolute; top: 2px; left: 6px; width: 5px; height: 6px; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; content: ''; }
+.minka-picker-dialog { position: fixed; inset: 0; width: min(24rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); margin: auto; padding: 1rem; overflow-y: auto; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); color: var(--ink); box-shadow: 0 20px 60px #192d2533; }
+.minka-picker-dialog::backdrop { background: #192d2559; }
+.minka-picker-dialog button { min-height: 40px; min-width: 0; border-radius: 9px; cursor: pointer; }
+.minka-picker-dialog button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.minka-picker-dialog button[aria-pressed="true"] { background: var(--brand); color: white; }
+.minka-picker-heading, .minka-calendar-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.minka-picker-heading h3 { font-size: 1.125rem; font-weight: 750; }
+.minka-picker-heading button, .minka-calendar-toolbar button { width: 40px; background: var(--field); font-size: 1.5rem; }
+.minka-calendar, .minka-clock { display: grid; gap: 12px; margin-top: 12px; }
+.minka-calendar-toolbar strong { text-transform: capitalize; }
+.minka-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; text-align: center; }
+.minka-week span { color: var(--muted); font-size: 0.75rem; }
+.minka-week button { background: var(--field); }
+.minka-week button[aria-current="date"]:not([aria-pressed="true"]) { outline: 1px solid var(--brand); }
+.minka-clock output { color: var(--brand); font-size: 1.75rem; font-weight: 800; text-align: center; }
+.minka-time-group { display: grid; gap: 5px; }
+.minka-time-options { display: grid; max-height: 128px; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; overflow: auto; padding: 3px; }
+.minka-time-options button { background: var(--field); }
+.minka-picker-dialog .minka-picker-action { padding: 0 12px; background: var(--brand); color: white; font-weight: 700; }
+.minka-picker-clear { padding: 0 12px; margin-top: 8px; color: var(--brand); text-decoration: underline; }
+
+.minka-select-popup[hidden], .minka-select-popup p[hidden], select[data-searchable][hidden] { display: none !important; }
+.minka-select-input input { background: transparent; border: 0; }
+.minka-select-popup ul { list-style: none; margin: 0; padding: 0; }
+.minka-select-input button, .minka-picker-dialog button { border: 0; }
+.minka-picker-dialog button:not(.minka-picker-action) { color: inherit; }
+.minka-picker-dialog button[aria-pressed="true"] { color: white; }
