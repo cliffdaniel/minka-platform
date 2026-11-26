@@ -5,7 +5,7 @@
     --surface-subtle: #eff3eb;
     --field: #f8faf7;
     --border: #dce5db;
-    --border-strong: #84968a;
+    --border-strong: #7d8f83;
     --ink: #192d25;
     --muted: #53675e;
     --brand: #265846;
@@ -16,6 +16,8 @@
     --warning-bg: #f9eedc;
     --danger: #a82e31;
     --danger-bg: #fff4f4;
+    --info: #235472;
+    --info-bg: #eaf3f8;
 
     --font: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     --space-1: 4px;
@@ -27,9 +29,11 @@
     --space-8: 32px;
     --space-10: 40px;
     --space-12: 48px;
+    --radius-compact: 8px;
     --radius-field: 12px;
     --radius-panel: 20px;
     --radius-hero: 28px;
+    --radius-pill: 999px;
     --focus: 2px solid var(--brand);
     --shadow: 0 12px 40px #192d2510;
     --sidebar-width: 232px;
@@ -37,4 +41,23 @@
     --topbar-height: 64px;
     --mobile-bar-height: 56px;
     --target-size: 48px;
+    --type-caption: 12px;
+    --type-label: 14px;
+    --type-body: 16px;
+    --type-section: 24px;
+    --type-display-mobile: 32px;
+    --type-display-web: 48px;
+    --line-tight: 1.08;
+    --line-heading: 1.2;
+    --line-body: 1.5;
+    --weight-regular: 400;
+    --weight-label: 650;
+    --weight-heading: 700;
+    --weight-display: 780;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --motion-fast: 140ms;
+    --motion-standard: 220ms;
+    --layer-topbar: 4;
+    --layer-popover: 6;
 }

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="tokens.css" />
         <link rel="stylesheet" href="design-system.css" />
         <link rel="stylesheet" href="preview.css" />
+        <link rel="stylesheet" href="reference.css" />
         <script src="preview.js" defer></script>
     </head>
     <body>
@@ -23,16 +24,18 @@
 
         <div class="doc-layout">
             <nav class="doc-nav" aria-label="Contenido del sistema de diseño">
-                <a href="#principios">Línea gráfica</a>
+                <a href="fundamentos.html">Fundamentos</a>
                 <a href="#navegacion">Navegación</a>
                 <a href="#layouts">Layouts y paneles</a>
-                <a href="#componentes">Componentes</a>
-                <a href="#storybook">Storybook</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="patrones.html">Patrones y flujos</a>
+                <a href="accesibilidad.html">Accesibilidad</a>
+                <a href="equipo.html">Storybook y equipo</a>
             </nav>
 
             <main id="contenido" class="doc-main" tabindex="-1">
-                <header class="intro" id="principios">
-                    <span class="tag">En revisión</span>
+                <header class="intro">
+                    <span class="tag">v0.2 · En revisión</span>
                     <h1>Sistema de diseño <span>Minka</span></h1>
                     <p>
                         Una interfaz clara para organizar eventos deportivos y participar en ellos, desde
@@ -48,7 +51,30 @@
                     </div>
                 </header>
 
-                <section class="doc-section" aria-labelledby="visual-heading">
+                <section aria-label="Capítulos" class="chapter-grid">
+                    <a href="fundamentos.html"
+                        ><strong>Fundamentos visuales <span aria-hidden="true">↗</span></strong
+                        ><span
+                            >Paleta, tipografía, espacios, iconos, movimiento y tokens descargables.</span
+                        ></a
+                    >
+                    <a href="catalogo.html"
+                        ><strong>Catálogo de componentes <span aria-hidden="true">↗</span></strong
+                        ><span>Explora controles, estados, navegación, datos y superposiciones.</span></a
+                    >
+                    <a href="patrones.html"
+                        ><strong>Patrones y flujos <span aria-hidden="true">↗</span></strong
+                        ><span
+                            >Acceso, perfil, eventos con varias modalidades y detalles publicados.</span
+                        ></a
+                    >
+                    <a href="accesibilidad.html"
+                        ><strong>Accesibilidad y contenido <span aria-hidden="true">↗</span></strong
+                        ><span>Teclado, lectores de pantalla, contraste, áreas seguras y mensajes.</span></a
+                    >
+                </section>
+
+                <section class="doc-section" id="principios" aria-labelledby="visual-heading">
                     <h2 id="visual-heading">Línea gráfica</h2>
                     <p class="lede">
                         Blanco en superficies de trabajo, verde bosque para acciones y verde salvia para
@@ -190,6 +216,11 @@
                                                 <div class="account-popup">
                                                     <strong id="account-name">Organizador Minka</strong>
                                                     <span id="account-role" class="muted">Organizador</span>
+                                                    <a
+                                                        id="preview-organizer-profile"
+                                                        href="patrones.html#perfil"
+                                                        >Perfil del organizador</a
+                                                    >
                                                     <button type="button" id="sign-out">
                                                         Cerrar sesión
                                                     </button>
@@ -605,6 +636,7 @@
                     maxlength="80"
                     placeholder="Ej. Maratón o Sprint"
                 />
+                <a href="patrones.html#publicacion">Probar varias modalidades y horarios</a>
                 <button class="button primary" type="submit">Añadir a la maqueta</button>
             </form>
         </dialog>

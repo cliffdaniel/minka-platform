@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es-PE">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Desde el acceso hasta la información publicada. Recorre ejemplos de formularios extensos, eventos con varias modalidades y perfil de organización."
+        />
+        <title>Patrones y flujos · Sistema de diseño Minka</title>
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="design-system.css" />
+        <link rel="stylesheet" href="reference.css" />
+        <script src="patrones.js" defer></script>
+    </head>
+    <body>
+        <a class="skip" href="#contenido">Ir al contenido</a>
+        <header class="site-header reference-site">
+            <div class="site-inner">
+                <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span> Minka</a>
+                <nav class="reference-nav" aria-label="Capítulos del sistema de diseño">
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#navegacion">Navegación</a>
+                    <a href="fundamentos.html">Fundamentos</a>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="patrones.html" aria-current="page">Patrones</a>
+                    <a href="accesibilidad.html">Accesibilidad</a>
+                    <a href="equipo.html">Equipo</a>
+                </nav>
+            </div>
+        </header>
+        <main class="reference" id="contenido" tabindex="-1">
+            <header class="intro">
+                <h1>Patrones y flujos</h1>
+                <p>
+                    Desde el acceso hasta la información publicada. Recorre ejemplos de formularios
+                    extensos, eventos con varias modalidades y perfil de organización.
+                </p>
+            </header>
+            <nav class="chapter-bar" aria-label="Flujos de ejemplo">
+                <a href="#acceso">Acceso</a><a href="#panel">Panel por rol</a
+                ><a href="#publicacion">Publicación</a><a href="#detalle">Detalle</a
+                ><a href="#perfil">Perfil</a>
+            </nav>
+
+            <section class="doc-section" id="acceso">
+                <h2>Acceso y registro</h2>
+                <div class="spec-grid">
+                    <article class="spec">
+                        <h3>Entrar</h3>
+                        <p>
+                            Correo, contraseña y acción principal «Iniciar sesión». Permite pegar la
+                            contraseña y mostrarla. Después del acceso lleva al panel del rol con el menú de
+                            cuenta disponible.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Crear una cuenta</h3>
+                        <p>
+                            El registro público crea una cuenta de runner. El super administrador da de alta
+                            a los organizadores desde Usuarios. Explica el rol y la siguiente acción sin
+                            pedir al usuario que elija permisos.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Sesión vencida</h3>
+                        <p>
+                            Vuelve a iniciar sesión y muestra el mensaje cerca del formulario. Ofrece
+                            reintento si el problema es de red. El cierre voluntario se encuentra en el menú
+                            de cuenta.
+                        </p>
+                    </article>
+                    <article class="spec">
+                        <h3>Realimentación</h3>
+                        <p>
+                            Los errores de acceso se anuncian sin exponer detalles internos. Mantén la
+                            etiqueta del botón durante la carga y protege el formulario frente a envíos
+                            repetidos.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="doc-section" id="panel">
+                <h2>Panel por rol</h2>
+                <div class="table-wrap">
+                    <table class="reference-table">
+                        <caption>
+                            Destinos y acciones visibles
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Destinos</th>
+                                <th scope="col">Acción contextual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Organizador</th>
+                                <td>Inicio · Mis eventos. Perfil en el menú de cuenta.</td>
+                                <td>Nuevo evento en Inicio o Mis eventos.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Runner</th>
+                                <td>Inicio · Próximos eventos.</td>
+                                <td>Consulta horarios, categorías y ruta publicada.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Super administrador</th>
+                                <td>Inicio · Todos los eventos · Usuarios.</td>
+                                <td>Nuevo evento y alta de organizadores en Usuarios.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><a href="index.html#navegacion">Probar el shell por dispositivo y rol</a></p>
+            </section>
+
+            <section class="doc-section" id="publicacion">
+                <h2>Publicación con varios horarios</h2>
+                <p class="lede">
+                    La programación general define el inicio y el fin opcional. Añade una modalidad por cada
+                    formato o salida con su propia información. La maqueta conserva los datos en esta página
+                    durante la prueba.
+                </p>
+                <div class="pattern-layout">
+                    <article class="sample">
+                        <form id="event-lab" class="demo-form">
+                            <header>
+                                <div>
+                                    <h3>Nuevo evento</h3>
+                                    <p>Prueba un evento de horas o de varios días.</p>
+                                </div>
+                                <button type="button" class="button secondary" id="event-example">
+                                    Cargar ejemplo de dos días
+                                </button>
+                            </header>
+                            <fieldset class="specimen">
+                                <legend>Datos generales</legend>
+                                <label
+                                    >Nombre del evento<input
+                                        name="title"
+                                        maxlength="120"
+                                        required
+                                        placeholder="Ej. Backyard del Misti"
+                                /></label>
+                                <div class="demo-field-grid">
+                                    <label
+                                        >Disciplina<select name="sport">
+                                            <option>Running</option>
+                                            <option>Atletismo</option>
+                                            <option>Trail</option>
+                                            <option>Triatlón</option>
+                                            <option>Duatlón</option>
+                                            <option>Ciclismo</option>
+                                            <option>Natación</option>
+                                            <option>Fitness competitivo</option>
+                                            <option>Otra disciplina</option>
+                                        </select></label
+                                    >
+                                    <label
+                                        >Ciudad<input
+                                            name="city"
+                                            maxlength="100"
+                                            required
+                                            placeholder="Ej. Arequipa"
+                                    /></label>
+                                    <label
+                                        >Lugar de inicio<input name="location" maxlength="160" required
+                                    /></label>
+                                    <label
+                                        >Lugar de fin (opcional)<input name="finish" maxlength="160"
+                                    /></label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="specimen">
+                                <legend>Horario general · Perú</legend>
+                                <div class="demo-field-grid">
+                                    <label
+                                        >Fecha de inicio<input name="startDay" type="date" required
+                                    /></label>
+                                    <label
+                                        >Hora de inicio<input name="startTime" type="time" required
+                                    /></label>
+                                    <label>Fecha de fin<input name="endDay" type="date" /></label>
+                                    <label>Hora de fin<input name="endTime" type="time" /></label>
+                                </div>
+                            </fieldset>
+                            <div class="demo-modalities" id="event-modalities"></div>
+                            <button type="button" class="button secondary" id="add-event-modality">
+                                Añadir modalidad
+                            </button>
+                            <p
+                                class="example-notice error"
+                                id="event-error"
+                                role="alert"
+                                tabindex="-1"
+                                hidden
+                            ></p>
+                            <button type="submit" class="button primary">Previsualizar evento</button>
+                        </form>
+                    </article>
+                    <aside class="sample" id="detalle">
+                        <h3 id="event-result-heading" tabindex="-1">Detalle del evento</h3>
+                        <div class="preview-result" id="event-result" aria-live="polite">
+                            <p>
+                                Completa el formulario o carga el ejemplo para revisar los horarios y las
+                                modalidades.
+                            </p>
+                        </div>
+                        <p>
+                            En la app, la vista publicada muestra el horario general y permite expandir cada
+                            modalidad para consultar categorías y Garmin.
+                        </p>
+                    </aside>
+                </div>
+                <template id="modality-template">
+                    <fieldset class="specimen" data-modality>
+                        <legend></legend>
+                        <label
+                            >Nombre de la modalidad<input
+                                name="name"
+                                maxlength="80"
+                                required
+                                placeholder="Ej. Backyard"
+                        /></label>
+                        <label
+                            >Categorías<input
+                                name="categories"
+                                maxlength="1800"
+                                placeholder="General, Máster"
+                        /></label>
+                        <p>
+                            Separa las categorías con comas. Usa horarios propios solo cuando difieran del
+                            evento o se conozca su fin.
+                        </p>
+                        <div class="demo-field-grid">
+                            <label>Lugar de inicio propio<input name="location" maxlength="160" /></label>
+                            <label>Lugar de fin propio<input name="finish" maxlength="160" /></label>
+                            <label>Fecha de inicio<input name="startDay" type="date" /></label>
+                            <label>Hora de inicio<input name="startTime" type="time" /></label>
+                            <label>Fecha de fin<input name="endDay" type="date" /></label>
+                            <label>Hora de fin<input name="endTime" type="time" /></label>
+                        </div>
+                        <label
+                            >Ruta en Garmin Connect<input
+                                name="garminUrl"
+                                type="url"
+                                maxlength="512"
+                                placeholder="https://connect.garmin.com/modern/course/…"
+                        /></label>
+                        <button type="button" class="button secondary" data-remove-modality>
+                            Quitar modalidad
+                        </button>
+                    </fieldset>
+                </template>
+                <aside class="note">
+                    <strong>Datos heredados</strong>
+                    <p>
+                        Sin inicio propio, la modalidad usa el horario general. Sin lugar propio, usa el
+                        equivalente del evento. La hora de fin de la modalidad se muestra cuando se define.
+                        Los enlaces de Garmin provienen de trayectos compartidos.
+                    </p>
+                    <p>
+                        <a href="https://support.garmin.com/en-US/?faq=HqVNg0t5pG7KFnmqKH0hHA"
+                            >Cómo compartir un trayecto en Garmin Connect</a
+                        >
+                    </p>
+                </aside>
+            </section>
+
+            <section class="doc-section" id="perfil">
+                <h2>Perfil del organizador</h2>
+                <p class="lede">
+                    Se abre desde el menú de cuenta. El nombre público identifica a la organización. Mantén
+                    la razón social y los datos de acceso como campos distintos.
+                </p>
+                <div class="pattern-layout">
+                    <article class="sample">
+                        <form id="profile-lab" class="demo-form">
+                            <h3>Datos de la organización</h3>
+                            <div class="specimen">
+                                <div class="sample-row">
+                                    <img
+                                        class="profile-logo"
+                                        id="profile-photo-preview"
+                                        alt="Logo de ejemplo"
+                                        width="72"
+                                        height="72"
+                                        hidden
+                                    />
+                                    <span
+                                        class="example-avatar"
+                                        id="profile-logo-fallback"
+                                        aria-label="Iniciales del logo de ejemplo"
+                                        >AM</span
+                                    >
+                                </div>
+                                <label
+                                    >Logo de la organización<input
+                                        type="file"
+                                        id="profile-photo"
+                                        accept="image/png,image/jpeg"
+                                /></label>
+                                <p>PNG o JPG de hasta 512 KB. Se previsualiza en esta página.</p>
+                                <button type="button" class="button secondary" id="profile-remove" hidden>
+                                    Quitar logo
+                                </button>
+                            </div>
+                            <div class="demo-field-grid">
+                                <label
+                                    >Nombre público<input
+                                        name="name"
+                                        maxlength="120"
+                                        required
+                                        placeholder="Club Minka"
+                                /></label>
+                                <label
+                                    >Razón social<input
+                                        name="legalName"
+                                        maxlength="180"
+                                        placeholder="Club Minka SAC"
+                                /></label>
+                                <label>Ciudad<input name="city" maxlength="100" /></label>
+                                <label
+                                    >Correo de contacto<input name="email" type="email" maxlength="254"
+                                /></label>
+                            </div>
+                            <label>Sitio web<input name="website" type="url" maxlength="300" /></label>
+                            <label
+                                >Descripción<textarea
+                                    name="description"
+                                    rows="3"
+                                    maxlength="800"
+                                ></textarea>
+                            </label>
+                            <p id="profile-feedback" role="status" hidden></p>
+                            <button type="submit" class="button primary">Guardar perfil de ejemplo</button>
+                        </form>
+                    </article>
+                    <aside class="sample">
+                        <h3>Comportamiento</h3>
+                        <ul class="rule-list">
+                            <li>
+                                El perfil contiene un nombre público obligatorio. Los demás campos son
+                                opcionales.
+                            </li>
+                            <li>Elegir o quitar un logo mantiene los demás datos y requiere guardar.</li>
+                            <li>
+                                Muestra confirmación al guardar y conserva los valores ante un error
+                                recuperable.
+                            </li>
+                            <li>
+                                Solo el titular puede acceder a la edición. Los ejemplos usan datos
+                                ficticios.
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
