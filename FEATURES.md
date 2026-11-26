@@ -18,9 +18,11 @@ Inicio y Eventos están disponibles en los tres roles y Usuarios queda reservado
 
 ## Publicación de eventos deportivos
 
-«Nuevo evento» abre el formulario en una pantalla propia en Mobile y Web estrecha. En escritorio lleva al formulario junto al listado. Se registran el nombre, la disciplina, la modalidad opcional, la ciudad, el lugar del evento y una fecha futura. El autor se toma de la sesión y el evento queda publicado al guardarse.
+«Nuevo evento» abre el formulario en una pantalla propia en Mobile y Web estrecha. En escritorio lleva al formulario junto al listado. Se registran el nombre, la disciplina, la ciudad, el lugar de inicio y la fecha y hora de inicio. La llegada y la fecha y hora de fin son opcionales. Un evento puede durar horas o abarcar varios días. El autor se toma de la sesión.
 
-Las disciplinas disponibles incluyen running, atletismo, trail, triatlón, duatlón, ciclismo, natación, fitness competitivo y otra disciplina. La modalidad permite distinguir formatos como maratón, 10K o sprint. Los eventos anteriores conservan su información y quedan clasificados como running. Los formularios muestran la hora de Perú y la API recibe una fecha ISO 8601 con zona horaria.
+Cada modalidad puede indicar su nombre, categorías, salida, llegada, fechas y horas propias y un enlace a un trayecto público de Garmin Connect. Sin horario de inicio o lugar propio se usan los datos generales correspondientes. Si se indica fin para el evento, la programación de sus modalidades debe quedar dentro de ese intervalo. Web y Mobile muestran los detalles y enlaces en el listado del rol. El horario se captura y se muestra en hora de Perú.
+
+Las disciplinas incluyen running, atletismo, trail, triatlón, duatlón, ciclismo, natación, fitness competitivo y otra disciplina. La migración conserva el evento y convierte la modalidad anterior en un elemento de la lista. En la API, `modality` sigue disponible para clientes anteriores y corresponde a la primera modalidad.
 
 ## Perfil del organizador
 
@@ -39,5 +41,5 @@ Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guarda
 | `POST /api/users/organizers` | Super administrador. Crea la cuenta de un organizador. |
 | `GET /api/users/organizers/me/profile` | Organizador autenticado. Devuelve su perfil o los valores iniciales de su cuenta. |
 | `PUT /api/users/organizers/me/profile` | Organizador autenticado. Guarda su perfil. Omitir `logoDataUrl` conserva el logo y enviar `null` lo quita. |
-| `GET /api/events`, `GET /api/events/upcoming` y `GET /api/events/{id}` | Público. Consultan eventos publicados. |
-| `POST /api/events` | Organizador o super administrador. Crea y publica un evento con disciplina y modalidad opcional. Si un cliente anterior omite la disciplina, se usa running. |
+| `GET /api/events`, `GET /api/events/upcoming` y `GET /api/events/{id}` | Público. Consultan eventos publicados con horarios, lugares y modalidades. `upcoming` incluye eventos futuros y en curso. |
+| `POST /api/events` | Organizador o super administrador. Crea y publica un evento con programación y modalidades opcionales. Si un cliente anterior omite la disciplina, se usa running. |
