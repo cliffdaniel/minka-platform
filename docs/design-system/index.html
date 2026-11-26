@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="preview.css" />
         <link rel="stylesheet" href="reference.css" />
         <script src="preview.js" defer></script>
+        <link rel="stylesheet" href="controles.css" />
+        <script src="controles.js" defer></script>
     </head>
     <body>
         <a class="skip" href="#contenido">Ir al contenido</a>
@@ -35,7 +37,7 @@
 
             <main id="contenido" class="doc-main" tabindex="-1">
                 <header class="intro">
-                    <span class="tag">v0.2 · En revisión</span>
+                    <span class="tag">v0.3 · En revisión</span>
                     <h1>Sistema de diseño <span>Minka</span></h1>
                     <p>
                         Una interfaz clara para organizar eventos deportivos y participar en ellos, desde
@@ -541,45 +543,18 @@
                         El HTML fija el comportamiento visual. Las historias usan los componentes reales de
                         cada plataforma con los mismos nombres y escenarios.
                     </p>
-                    <div class="table-wrap">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Historia</th>
-                                    <th scope="col">Escenarios compartidos</th>
-                                    <th scope="col">Catálogo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Button</th>
-                                    <td>Primary, Secondary, Outline, Disabled, Loading</td>
-                                    <td>Existe en ambos</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Input / PasswordInput</th>
-                                    <td>Default, Hint, Error, Disabled, PasswordVisible</td>
-                                    <td>Existe en ambos</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Sidebar / TopBar / TabBar</th>
-                                    <td>Organizer, Runner, SuperAdmin, Active, LongLabel, Detail</td>
-                                    <td>Web y Mobile · Minka / Navigation / Shell</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Panel / EventList / Form</th>
-                                    <td>Default, Empty, Loading, Error, Populated, RetryWithData</td>
-                                    <td>Web y Mobile · Minka / Panels</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <p>
+                        Ambos catálogos siguen Atomic Design. Los átomos y moléculas cubren los controles
+                        y sus estados. Los organismos reúnen navegación, formularios y paneles. Las
+                        plantillas y páginas muestran el dashboard y los flujos completos por rol.
+                        <a href="equipo.html#storybook">Ver inventario y comandos de Storybook</a>.
+                    </p>
                     <div class="spec-grid">
                         <article class="spec">
                             <h3>Web</h3>
                             <p>
                                 En <code>minka-web</code>, ejecuta <code>npm run storybook</code>. Revisa
-                                los ejemplos de 390, 768, 1024 y 1440 px, navegación con teclado y foco
+                                los ejemplos de 390, 768 y 1440 px, navegación con teclado y foco
                                 visible.
                             </p>
                         </article>
@@ -618,7 +593,7 @@
                 <label for="demo-race-city">Ciudad</label>
                 <input id="demo-race-city" name="city" maxlength="100" required />
                 <label for="demo-event-sport">Disciplina</label>
-                <select id="demo-event-sport" name="sport">
+                <select id="demo-event-sport" name="sport" data-searchable>
                     <option>Running</option>
                     <option>Atletismo</option>
                     <option>Trail</option>

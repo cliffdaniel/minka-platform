@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="design-system.css" />
         <link rel="stylesheet" href="reference.css" />
         <script src="catalogo.js" defer></script>
+        <link rel="stylesheet" href="controles.css" />
+        <script src="controles.js" defer></script>
     </head>
     <body>
         <a class="skip" href="#contenido">Ir al contenido</a>
@@ -197,10 +199,10 @@
                         class="sample component-spec"
                         data-component="selector dropdown disciplina menu picker"
                     >
-                        <h3>Select</h3>
+                        <h3>Selector autocompletable</h3>
                         <div class="specimen">
                             <label for="catalog-discipline">Disciplina</label
-                            ><select id="catalog-discipline">
+                            ><select id="catalog-discipline" data-searchable>
                                 <option>Running</option>
                                 <option>Triatlón</option>
                                 <option>Ciclismo</option>
@@ -209,11 +211,11 @@
                         </div>
                         <dl class="facts">
                             <dt>Estados</dt>
-                            <dd>Inicial, seleccionado y deshabilitado.</dd>
+                            <dd>Inicial, seleccionado, sin resultados, carga, error, paginación y deshabilitado.</dd>
                             <dt>Uso</dt>
                             <dd>
-                                Usa selector nativo si la lista es breve. Para Mobile conserva el valor al
-                                cerrar y marca la opción seleccionada.
+                                Filtra localmente para disciplinas y catálogos pequeños. Para conjuntos grandes,
+                                consulta el endpoint con búsqueda y cursor. Storybook muestra ambas variantes.
                             </dd>
                         </dl>
                     </article>
@@ -290,8 +292,8 @@
                             <dd>Vacío, valor, incompleto e inválido.</dd>
                             <dt>Uso</dt>
                             <dd>
-                                Usa campos separados. Si se indica el fin, valida fecha y hora y comprueba
-                                que quede después del inicio.
+                                Usa el calendario y el selector de hora de Minka o escribe el valor directamente.
+                                Si indicas el fin, valida que la fecha y la hora sean posteriores al inicio.
                             </dd>
                         </dl>
                     </article>

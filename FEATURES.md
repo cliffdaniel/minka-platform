@@ -20,13 +20,17 @@ Inicio y Eventos están disponibles en los tres roles y Usuarios queda reservado
 
 «Nuevo evento» abre el formulario en una pantalla propia en Mobile y Web estrecha. En escritorio lleva al formulario junto al listado. Se registran el nombre, la disciplina, la ciudad, el lugar de inicio y la fecha y hora de inicio. La llegada y la fecha y hora de fin son opcionales. Un evento puede durar horas o abarcar varios días. El autor se toma de la sesión.
 
-Cada modalidad puede indicar su nombre, categorías, salida, llegada, fechas y horas propias y un enlace a un trayecto público de Garmin Connect. Sin horario de inicio o lugar propio se usan los datos generales correspondientes. Si se indica fin para el evento, la programación de sus modalidades debe quedar dentro de ese intervalo. Web y Mobile muestran los detalles y enlaces en el listado del rol. El horario se captura y se muestra en hora de Perú.
+Cada modalidad puede indicar su nombre, categorías, salida, llegada, fechas y horas propias y un enlace a un trayecto público de Garmin Connect. Sin horario de inicio o lugar propio se usan los datos generales correspondientes. Si se indica fin para el evento, la programación de sus modalidades debe quedar dentro de ese intervalo. Web y Mobile muestran los detalles y enlaces en el listado del rol. El horario se captura con el calendario y el selector de hora de Minka y se muestra en hora de Perú. Se puede escribir la fecha u hora directamente. La disciplina usa un selector autocompletable con búsqueda local.
 
 Las disciplinas incluyen running, atletismo, trail, triatlón, duatlón, ciclismo, natación, fitness competitivo y otra disciplina. La migración conserva el evento y convierte la modalidad anterior en un elemento de la lista. En la API, `modality` sigue disponible para clientes anteriores y corresponde a la primera modalidad.
 
 ## Perfil del organizador
 
 Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar. El perfil se guarda por separado de la cuenta de acceso y solo su titular puede consultarlo y modificarlo por estos endpoints.
+
+## Catálogos de interfaz
+
+Storybook Web y Mobile organizan los componentes de producción y sus composiciones por fundamentos, átomos, moléculas, organismos, plantillas y páginas. Cubren los tres roles, navegación, acceso, registro runner, usuarios, perfil y eventos con sus horarios y modalidades. Las historias usan datos de demostración para enviar formularios y revisar validación, carga, errores, reintento y confirmaciones de forma aislada. Web incluye documentación de componentes, tamaños de vista, pruebas de interacción y el panel de accesibilidad. El selector autocompletable muestra variantes de búsqueda local y remota paginada con un endpoint simulado. Consulta la [guía de Storybook](docs/design-system/equipo.html#storybook).
 
 ## Endpoints
 
