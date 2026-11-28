@@ -80,7 +80,26 @@ Decisiones abiertas:
   - `Button` ya no es `'use client'`, para poder recibir `linkAs` desde páginas de servidor.
 - **Pendiente menor (Web):** `Hero` sin `eyebrow`, `Grid` sin auto-fit, `Inline` sin `justify` y la falta de un componente fieldset/legend se resuelven hoy con estilos puntuales en producto.
 
-## Pruebas ejecutadas
+## Organizador en los eventos y página pública (2026-11-28)
+- **Backend:**
+  - Cada evento lleva `organizer` (`id`, `name`, `city`, `logoUrl`): en `/api/events`, `/upcoming`, `/:id` y en `races` de `/api/dashboard`.
+  - `logoUrl` es relativo a la API y versionado.
+  - Endpoints públicos nuevos: `GET /api/organizers/{id}` y `GET /api/organizers/{id}/logo`.
+  - Arquitectura:
+    - puerto `OrganizerDirectory` en `users/domain` y adaptador TypeORM, que calcula el resumen en una sola consulta y la versión del logo con `md5` en SQL;
+    - `EventPresenter` en `events`;
+    - caso de uso `GetOrganizerPage` en el módulo nuevo `organizers`.
+- **Web:**
+  - Página pública en `/organizadores/{id}`.
+  - `EventCard` muestra «Organiza …».
+  - `Link` acepta `linkAs`; `Avatar` acepta `decorative`. Mobile no tiene `decorative`.
+- **Mobile:**
+  - `EventCard` con el organizador y pantalla `Organizer`.
+  - `ListItem.accessibilityLabel`.
+  - El logo de las historias usa `placehold.co`: sin red no se ve en Storybook.
+- **Pendiente:** el logo sigue guardado como base64 en la base. Moverlo a almacenamiento de archivos cambiaría solo el adaptador y el endpoint del logo.
+
+
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 
 ## Pendiente, por orden

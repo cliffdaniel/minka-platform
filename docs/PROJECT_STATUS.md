@@ -4,9 +4,9 @@ Verificado el 2026-11-27 ejecutando los comandos de CONTRIBUTING.md.
 
 | Repositorio | lint | typecheck / build | pruebas | Notas |
 | --- | --- | --- | --- | --- |
-| minka-backend | OK | `npm run build` OK | `npm test` OK (7 pruebas) | e2e no ejecutado (necesita `DATABASE_URL`). |
-| minka-web | OK | `tsc` y `npm run build` OK | Vitest 45/45, Playwright e2e 5/5 y 453 historias OK | Verificado en navegador y a 390 px. |
-| minka-mobile | OK (tras corregir) | `npm run typecheck` OK | `npm test` OK (418/418, todas las historias) | Android compila e instala; sin revisión visual en Android ni iOS. |
+| minka-backend | OK | `npm run build` OK | `npm test` OK (13 pruebas) y e2e 3/3 con base desechable | — |
+| minka-web | OK | `tsc` y `npm run build` OK | Vitest 49/49, Playwright e2e 5/5 y 460 historias OK | Verificado en navegador y a 390 px. |
+| minka-mobile | OK (tras corregir) | `npm run typecheck` OK | `npm test` OK (437/437, todas las historias) | Android compila e instala; sin revisión visual en Android ni iOS. |
 | plataforma | — | `docker compose config` OK | — | Servicios no levantados. |
 
 ## Funcionalidades (según FEATURES.md y los commits)

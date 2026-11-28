@@ -30,7 +30,7 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 | --- | --- | --- |
 | 1 | `Button` | `variant`: primary, secondary, outline, ghost, danger. `size`: sm, md, lg. `loading`, `disabled`, `leadingIcon`, `fullWidth`. Con `href` es un enlace con el mismo aspecto |
 | 2 | `IconButton` | `icon`, `label` (accesible), `variant`, `size`. Con `href` es un enlace |
-| 3 | `Link` | `href`, `tone`: brand, muted. `external` |
+| 3 | `Link` | `href`, `tone`: brand, muted. `external`, `linkAs` |
 | 4 | `Input` | `type`, `size`, `invalid`, `disabled`, `leading`, `trailing` |
 | 5 | `Textarea` | `rows`, `invalid`, `disabled`, `maxLength` con contador |
 | 6 | `Select` | opciones nativas, `invalid`, `disabled`, `placeholder` |
@@ -47,7 +47,7 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 | 17 | `Counter` | número con tope (`99+`) |
 | 18 | `Tag` | etiqueta de texto, `tone` |
 | 19 | `Chip` | `selected`, `removable`, `disabled` |
-| 20 | `Avatar` | `src`, `name` (iniciales), `size` |
+| 20 | `Avatar` | `src`, `name` (iniciales), `size`, `decorative` (no se anuncia si el nombre está escrito al lado) |
 | 21 | `Logo` | marca Minka, `variant`: full, mark |
 | 22 | `Spinner` | `size`, `tone` |
 | 23 | `Skeleton` | `shape`: line, block, circle |
@@ -95,7 +95,7 @@ Piezas genéricas que componen átomos. Ninguna conoce el dominio de Minka.
 
 Secciones completas que componen moléculas y átomos. **Son genéricos: reciben datos y contenido por props y no conocen eventos, organizadores ni roles.** Si un componente nombra algo de Minka, es de producto y va en el grupo `Product`.
 
-**Enlaces del router.** `Button`, `IconButton`, `MenuItem`, `DropdownMenu`, `Navbar`, `Sidebar` y `TabBar` aceptan `href` y, en Web, `linkAs` (por defecto `a`; la app pasa `next/link` para navegar sin recargar). En Mobile la navegación va por `onPress`/`onSelect`.
+**Enlaces del router.** `Link`, `Button`, `IconButton`, `MenuItem`, `DropdownMenu`, `Navbar`, `Sidebar` y `TabBar` aceptan `href` y, en Web, `linkAs` (por defecto `a`; la app pasa `next/link` para navegar sin recargar). En Mobile la navegación va por `onPress`/`onSelect`.
 
 | Nombre | Para qué sirve | Props principales |
 | --- | --- | --- |
@@ -129,6 +129,7 @@ Componentes que usan el vocabulario de Minka. Se documentan en Storybook bajo `P
 | `AccountMenu` | `DropdownMenu` con `Avatar`, nombre y rol en `header`, perfil y cierre de sesión |
 | `AuthPageLayout` | Plantilla `AuthLayout` con `Logo` y la foto de Minka |
 | `DashboardHero`, `DashboardOverview` | `Hero` y `StatsGrid` |
+| `OrganizerPublicProfile` | `Surface`, `Avatar`, `Heading`, `Link`, `Panel` y `EventList` |
 | `EventCard`, `EventList`, `UsersPanel` | `Card`, `CollectionView`, `ListItem` con `Avatar` y `RoleBadge` |
 | `EventForm`, `OrganizerForm`, `OrganizerProfileForm`, `AuthForm` | `FormField`, `Input`, `Textarea`, `Stack`, `Inline`, `Alert` |
 | `EventProgramDetails`, `DisciplineSelect` | `Accordion`, `Surface`, `Time`, `Link`, `SearchSelect` |
