@@ -26,7 +26,7 @@ Las disciplinas incluyen running, atletismo, trail, triatlón, duatlón, ciclism
 
 ## Perfil del organizador
 
-Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar. El perfil se guarda por separado de la cuenta de acceso y solo su titular puede consultarlo y modificarlo por estos endpoints.
+Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar y se guarda como archivo en el almacenamiento del backend, no en la base de datos. El perfil se guarda por separado de la cuenta de acceso y solo su titular puede consultarlo y modificarlo por estos endpoints.
 
 ## Organizador en los eventos y página pública
 
@@ -63,6 +63,6 @@ Storybook Web y Mobile son un sistema de diseño completo con los mismos nombres
 | `GET /api/organizers/{id}` | Público. Perfil público del organizador y sus eventos publicados que vienen. 404 si la cuenta no publica eventos. |
 | `GET /api/organizers/{id}/logo` | Público. Logo PNG o JPG, con caché larga (la URL lleva `?v=`). 404 si no tiene logo. |
 | `GET /api/users/organizers/me/profile` | Organizador autenticado. Devuelve su perfil o los valores iniciales de su cuenta. |
-| `PUT /api/users/organizers/me/profile` | Organizador autenticado. Guarda su perfil. Omitir `logoDataUrl` conserva el logo y enviar `null` lo quita. |
+| `PUT /api/users/organizers/me/profile` | Organizador autenticado. Guarda su perfil. El logo nuevo se envía en `logoDataUrl` (PNG o JPEG en data URL); omitirlo lo conserva y `null` lo quita. La respuesta, como la del `GET`, trae `logoUrl` (ruta versionada del logo) y ya no `logoDataUrl`. |
 | `GET /api/events`, `GET /api/events/upcoming` y `GET /api/events/{id}` | Público. Consultan eventos publicados con horarios, lugares y modalidades. `upcoming` incluye eventos futuros y en curso. |
 | `POST /api/events` | Organizador o super administrador. Crea y publica un evento con programación y modalidades opcionales. Si un cliente anterior omite la disciplina, se usa running. |

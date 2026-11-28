@@ -97,7 +97,27 @@ Decisiones abiertas:
   - `EventCard` con el organizador y pantalla `Organizer`.
   - `ListItem.accessibilityLabel`.
   - El logo de las historias usa `placehold.co`: sin red no se ve en Storybook.
-- **Pendiente:** el logo sigue guardado como base64 en la base. Moverlo a almacenamiento de archivos cambiaría solo el adaptador y el endpoint del logo.
+- **Resuelto ese mismo día:** el logo pasó al almacenamiento de archivos (sección siguiente).
+
+## Logo del organizador en almacenamiento de archivos (2026-11-28)
+- **Almacenamiento:**
+  - Puerto `FileStorage` en `src/shared/domain` y adaptador `LocalFileStorage`, que escribe en `MINKA_STORAGE_DIR`.
+  - Compose monta el volumen `backend_storage` en `/app/storage`; el Dockerfile crea la carpeta con permisos de `nestjs`.
+  - Para pasar a S3 basta un adaptador nuevo.
+- **Guardado:**
+  - Caso de uso `SaveOrganizerProfile`.
+  - Clave `organizers/<id>/<sha256-16>.<ext>`; el hash es también la versión de la URL.
+  - Escribe el archivo, guarda el perfil y solo después borra el anterior, si el perfil ya no lo usa.
+  - Si falla el guardado, borra el archivo nuevo. Si falla la limpieza, el guardado igual responde bien y queda un aviso en el log.
+- **Datos existentes:**
+  - Migración `AddOrganizerLogoKey1795565000000`, no destructiva: agrega `logoKey`.
+  - Al arrancar, `CopyLegacyLogos` copia los base64 al almacenamiento, de a uno, **sin borrarlos**.
+  - El endpoint del logo usa el base64 como respaldo si falta el archivo, y deja un aviso en el log.
+- **Contrato que cambió:**
+  - `GET`/`PUT /api/users/organizers/me/profile` responden `logoUrl` en lugar de `logoDataUrl`.
+  - El `PUT` sigue recibiendo `logoDataUrl`.
+  - Web y Mobile ya están actualizados. Mobile manda el logo solo si cambió y su Storybook ya no usa imágenes externas.
+- **Pendiente manual:** vaciar `organizer_profiles.logoDataUrl` cuando se confirme que el volumen es persistente en el servidor. No se hizo automático para no perder datos.
 
 
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
