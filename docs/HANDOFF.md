@@ -16,6 +16,9 @@ Codex trabajaba en corregir los controles de formulario, a petición del usuario
 - `minka-mobile/.eslintrc.js`: `Input` se suma a las excepciones de `react/jsx-props-no-spreading`, junto a `TextInput` y `TouchableOpacity`, porque `PasswordInput` reenvía las props de `Input`.
 - AGENTS.md pasa a ser la fuente neutral y CLAUDE.md la importa.
 
+## Verificación en web (2026-11-27)
+Revisada en Storybook (Chrome, escritorio): perfil del organizador con logo, selector autocompletable, página Nuevo evento, calendario y reloj. Un solo borde en los inputs, foco visible y selectores funcionando. Se corrigió «Noviembre De» → «Noviembre de». Observación abierta: la cuadrícula de horas del reloj muestra 3 filas con scroll interno. No se probaron estados de error, ancho móvil/tablet ni la subida real del logo.
+
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 
