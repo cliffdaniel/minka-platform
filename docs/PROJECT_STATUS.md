@@ -5,7 +5,7 @@ Verificado el 2026-11-27 ejecutando los comandos de CONTRIBUTING.md.
 | Repositorio | lint | typecheck / build | pruebas | Notas |
 | --- | --- | --- | --- | --- |
 | minka-backend | OK | `npm run build` OK | `npm test` OK (1 prueba) | e2e no ejecutado (necesita `DATABASE_URL`). |
-| minka-web | OK | `tsc` y `npm run build` OK | Playwright 4/4 OK | Verificado en navegador y a 390 px. |
+| minka-web | OK | `tsc` y `npm run build` OK | Playwright 5/5 OK | Verificado en navegador y a 390 px. |
 | minka-mobile | OK (tras corregir) | `npm run typecheck` OK | `npm test` OK (4/4, tras corregir) | Sin verificación en emulador. |
 | plataforma | — | `docker compose config` OK | — | Servicios no levantados. |
 
@@ -21,4 +21,3 @@ En progreso: rediseño de los controles de formulario (ver HANDOFF.md).
 - Backend con una sola prueba unitaria. La cobertura real está en e2e, que requiere base de datos.
 - Node local 22.12.0, pero Mobile pide 22.13 o superior. Las pruebas pasaron igual.
 - La base local existente no arranca con `DB_SYNC=true` (rol `admin` heredado): requiere la migración de roles.
-- Validación de formularios con burbuja nativa en inglés.

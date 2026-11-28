@@ -28,6 +28,10 @@ Las disciplinas incluyen running, atletismo, trail, triatlón, duatlón, ciclism
 
 Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar. El perfil se guarda por separado de la cuenta de acceso y solo su titular puede consultarlo y modificarlo por estos endpoints.
 
+## Validación de formularios
+
+Los formularios de Web (acceso, registro, evento, organizador y perfil) muestran los errores de campo con el estilo de Minka y en español, junto al campo y con `aria-invalid`. Al enviar con errores el foco pasa al primer campo inválido. El error desaparece al editar el campo. Mobile ya mostraba sus errores en línea.
+
 ## Catálogos de interfaz
 
 Storybook Web y Mobile organizan los componentes de producción y sus composiciones por fundamentos, átomos, moléculas, organismos, plantillas y páginas. Cubren los tres roles, navegación, acceso, registro runner, usuarios, perfil y eventos con sus horarios y modalidades. Las historias usan datos de demostración para enviar formularios y revisar validación, carga, errores, reintento y confirmaciones de forma aislada. Web incluye documentación de componentes, tamaños de vista, pruebas de interacción y el panel de accesibilidad. El selector autocompletable muestra variantes de búsqueda local y remota paginada con un endpoint simulado. Consulta la [guía de Storybook](docs/design-system/equipo.html#storybook).

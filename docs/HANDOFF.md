@@ -19,7 +19,7 @@ Codex trabajaba en corregir los controles de formulario, a petición del usuario
 ## Verificación en web (2026-11-27)
 Storybook en Chrome (escritorio) y la app real con Playwright a 390 px. Un solo borde, foco visible, select, calendario y reloj funcionando. Corregido: «Noviembre De»; cuadrícula de horas sin scroll interno; fecha y hora en una columna a menos de ~330 px; el primer campo inválido queda bajo la cabecera pegajosa; `lang="es"` y título «Minka» (era «Create Next App»). La prueba de perfil espera ahora «Subir logo» en el estado vacío.
 
-Pendiente de decisión: los campos obligatorios vacíos muestran la burbuja nativa del navegador (en inglés, sin estilo Minka). Usar `noValidate` y el `error` de `Input` implica tocar todos los formularios.
+Errores de campo: resueltos con `ValidatedForm` (`src/presentation/components/Form/ValidatedForm.tsx`), que intercepta el evento `invalid`, traduce el mensaje y lo pasa a `Input` y `SearchSelect` por contexto. Cubierto por `tests/field-validation.spec.ts`.
 
 Para correr el e2e: backend en :4000 con una base desechable, web compilada (`npm run build` + `next start`; el modo dev cuelga el evento `load` desde 127.0.0.1) y variables `MINKA_{ORGANIZER,RUNNER,ADMIN}_{EMAIL,PASSWORD}` y `MINKA_PROFILE_TEST_{EMAIL,PASSWORD}`. El backend limita los logins por minuto: usa `--workers=1` y espera entre corridas. La prueba de eventos no es idempotente con datos previos.
 
