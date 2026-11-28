@@ -77,7 +77,8 @@
                         <p>
                             Los errores de acceso se anuncian sin exponer detalles internos. Mantén la
                             etiqueta del botón durante la carga y protege el formulario frente a envíos
-                            repetidos.
+                            repetidos. Los campos vacíos o inválidos muestran su mensaje bajo el campo, con el
+                            borde de error, y el foco va al primero.
                         </p>
                     </article>
                 </div>
@@ -282,33 +283,31 @@
                     <article class="sample">
                         <form id="profile-lab" class="demo-form">
                             <h3>Datos de la organización</h3>
-                            <div class="specimen">
-                                <div class="sample-row">
-                                    <img
-                                        class="profile-logo"
-                                        id="profile-photo-preview"
-                                        alt="Logo de ejemplo"
-                                        width="72"
-                                        height="72"
-                                        hidden
-                                    />
-                                    <span
-                                        class="example-avatar"
-                                        id="profile-logo-fallback"
-                                        aria-label="Iniciales del logo de ejemplo"
-                                        >AM</span
-                                    >
+                            <div class="minka-upload">
+                                <div class="minka-upload-tile">
+                                    <img id="profile-photo-preview" alt="Logo de ejemplo" width="56" height="56" hidden />
+                                    <span class="minka-upload-icon" id="profile-logo-fallback" aria-hidden="true"></span>
                                 </div>
-                                <label
-                                    >Logo de la organización<input
-                                        type="file"
-                                        id="profile-photo"
-                                        accept="image/png,image/jpeg"
-                                /></label>
-                                <p>PNG o JPG de hasta 512 KB. Se previsualiza en esta página.</p>
-                                <button type="button" class="button secondary" id="profile-remove" hidden>
-                                    Quitar logo
-                                </button>
+                                <div class="minka-upload-content">
+                                    <p class="minka-upload-title">Logo del organizador</p>
+                                    <p id="profile-logo-help" class="minka-upload-help">PNG o JPG · Hasta 512 KB</p>
+                                </div>
+                                <div class="minka-upload-actions">
+                                    <label class="minka-upload-button">
+                                        <input
+                                            type="file"
+                                            id="profile-photo"
+                                            class="sr-only"
+                                            accept="image/png,image/jpeg"
+                                            aria-label="Logo del organizador"
+                                            aria-describedby="profile-logo-help"
+                                        />
+                                        <span id="profile-upload-label">Subir logo</span>
+                                    </label>
+                                    <button type="button" class="minka-upload-remove" id="profile-remove" hidden>
+                                        Quitar logo
+                                    </button>
+                                </div>
                             </div>
                             <div class="demo-field-grid">
                                 <label
@@ -348,7 +347,10 @@
                                 El perfil contiene un nombre público obligatorio. Los demás campos son
                                 opcionales.
                             </li>
-                            <li>Elegir o quitar un logo mantiene los demás datos y requiere guardar.</li>
+                            <li>
+                                Sin logo, la acción dice «Subir logo»; con logo, «Cambiar logo» y «Quitar logo». Elegir
+                                o quitar un logo mantiene los demás datos y requiere guardar.
+                            </li>
                             <li>
                                 Muestra confirmación al guardar y conserva los valores ante un error
                                 recuperable.

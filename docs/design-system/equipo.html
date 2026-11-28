@@ -125,6 +125,21 @@
                     <code>options</code> y el <code>nextCursor</code> cuando queden resultados.
                     Las historias simulan esa respuesta para revisar espera, error y carga adicional.
                 </p>
+                <p>
+                    En una lista remota, los botones del desplegable («Cargar más resultados» y
+                    «Reintentar») no deben mover el foco del campo; si lo hicieran, el selector se cerraría
+                    y cancelaría la carga.
+                </p>
+                <h3>Pruebas de historias</h3>
+                <p>
+                    Cada historia tiene una prueba automática. En Web, <code>npm run test:stories</code> compila
+                    el catálogo y, en un navegador, comprueba que cada historia renderiza, que su
+                    interacción termina sin fallos, que no hay errores de consola y que no hay problemas
+                    graves de accesibilidad. En Mobile, <code>npm test</code> renderiza todas las historias y
+                    falla ante cualquier error; no ejecuta las interacciones ni sustituye la revisión en
+                    dispositivo. Al crear una historia nueva, ejecuta la prueba de su plataforma antes de
+                    entregar.
+                </p>
                 <p><a href="https://atomicdesign.bradfrost.com/chapter-2/">Metodología Atomic Design de Brad Frost</a></p>
             </section>
 

@@ -32,6 +32,9 @@ La base local `minka-platform_postgres_data` (`minka_db`) se migró el 2026-11-2
 - Historias corregidas: «Keyboard Dismissal» (el clic de `userEvent` no enfoca un `<summary>`) y «Choose Date/Time» (carrera con el `<dialog>` que tarda en desmontarse). `asyncUtilTimeout` sube a 5 s en `.storybook/preview.tsx`.
 - No se volvió a correr el e2e de Playwright tras el cambio en `SearchSelect`.
 
+## Sistema de diseño (HTML)
+Actualizado el 2026-11-27 para reflejar lo hecho en la sesión: errores de campo propios (`accesibilidad.html`, `patrones.html`), pruebas de historias y la regla del foco en listas remotas (`equipo.html`, `accesibilidad.html`) y el campo de subida de logo con su estado vacío (`patrones.html`, `patrones.js`, `.sr-only` en `controles.css`). El prototipo del logo ahora usa `.minka-upload*` en lugar del `<input type="file">` nativo. Verificado solo con comprobaciones del DOM en un navegador; no se revisó el aspecto visual de las páginas.
+
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 

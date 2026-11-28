@@ -201,6 +201,7 @@ const file = select('profile-photo');
 const photo = select('profile-photo-preview');
 const fallback = select('profile-logo-fallback');
 const remove = select('profile-remove');
+const uploadLabel = select('profile-upload-label');
 const message = select('profile-feedback');
 let previewUrl;
 
@@ -218,6 +219,7 @@ function previewLogo(url) {
     photo.hidden = !url;
     fallback.hidden = Boolean(url);
     remove.hidden = !url;
+    uploadLabel.textContent = url ? 'Cambiar logo' : 'Subir logo';
 }
 
 file.addEventListener('change', () => {

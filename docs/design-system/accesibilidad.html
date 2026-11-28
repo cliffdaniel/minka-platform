@@ -72,6 +72,13 @@
                             ingresado, anuncia el resumen y lleva a los campos con error. El teclado y las
                             barras fijas dejan espacio para desplazar el control enfocado.
                         </p>
+                        <p>
+                            En Web, el formulario desactiva la burbuja nativa del navegador y muestra el
+                            mensaje en español bajo el campo, con <code>aria-invalid</code> y enlazado por
+                            <code>aria-describedby</code>. Al enviar, el foco pasa al primer campo inválido y
+                            cada mensaje desaparece al editar su campo. Escribe qué falta o cómo corregirlo:
+                            «Completa este campo.» o «Usa al menos 12 caracteres.», sin tecnicismos.
+                        </p>
                     </article>
                     <article class="spec">
                         <h3>Acciones y estados</h3>
@@ -192,6 +199,10 @@
                             <li>Recorre con Tab, Shift + Tab y Escape.</li>
                             <li>Prueba a 320, 390, 768, 1024 y 1440 px, con zoom y texto largo.</li>
                             <li>Comprueba una vez con lector de pantalla y movimiento reducido.</li>
+                            <li>
+                                Ejecuta <code>npm run test:stories</code>: cada historia debe renderizar, completar su
+                                interacción y no tener problemas graves de accesibilidad.
+                            </li>
                         </ul>
                     </article>
                     <article class="spec">
