@@ -23,7 +23,7 @@ Errores de campo: resueltos con `ValidatedForm` (`src/presentation/components/Fo
 
 Para correr el e2e: backend en :4000 con una base desechable, web compilada (`npm run build` + `next start`; el modo dev cuelga el evento `load` desde 127.0.0.1) y variables `MINKA_{ORGANIZER,RUNNER,ADMIN}_{EMAIL,PASSWORD}` y `MINKA_PROFILE_TEST_{EMAIL,PASSWORD}`. El backend limita los logins por minuto: usa `--workers=1` y espera entre corridas. La prueba de eventos no es idempotente con datos previos.
 
-La base `minka-platform_postgres_data` es de un esquema anterior (rol `admin`): `DB_SYNC=true` falla contra ella. Hace falta `DB_SYNC=false` con `DB_MIGRATIONS_RUN=true`, que reasigna roles. No se ejecutó.
+La base local `minka-platform_postgres_data` (`minka_db`) se migró el 2026-11-27 con `DB_SYNC=false` y `DB_MIGRATIONS_RUN=true`: se aplicaron las 5 migraciones y su único usuario, `admin@minka.pe`, pasó de `admin` a `super_admin`. Ya arranca con `DB_SYNC=true`. No hay organizadores ni eventos en esa base. El respaldo previo no se versionó.
 
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.

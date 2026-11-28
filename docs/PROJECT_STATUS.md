@@ -20,4 +20,4 @@ En progreso: rediseño de los controles de formulario (ver HANDOFF.md).
 - `DB_SYNC=true` por defecto en `docker-compose.yml`: el esquema se sincroniza solo, sin migraciones versionadas por defecto.
 - Backend con una sola prueba unitaria. La cobertura real está en e2e, que requiere base de datos.
 - Node local 22.12.0, pero Mobile pide 22.13 o superior. Las pruebas pasaron igual.
-- La base local existente no arranca con `DB_SYNC=true` (rol `admin` heredado): requiere la migración de roles.
+- La base local ya está migrada (5 migraciones, `admin` → `super_admin`) y no contiene organizadores ni eventos.
