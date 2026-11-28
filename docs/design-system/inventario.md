@@ -87,12 +87,39 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 
 ## Moléculas (Molecules), 22
 
-`FormField` (etiqueta, campo, ayuda y error), `PasswordInput`, `SearchField`, `SearchSelect`, `DatePicker`, `TimePicker`, `ScheduleField`, `DisciplineSelect`, `FileUpload`, `Alert`, `Toast`, `Breadcrumbs`, `Pagination`, `Tabs`, `SegmentedControl`, `ButtonGroup`, `Stepper`, `EmptyState`, `StatCard`, `AccountMenu`, `EventProgramDetails`, `Panel`.
+Piezas genéricas que componen átomos. Ninguna conoce el dominio de Minka.
 
-## Organismos (Organisms), 14
+`FormField`, `PasswordInput`, `SearchField`, `SearchSelect`, `DatePicker`, `TimePicker`, `ScheduleField`, `FileUpload` (genérico: `label`, `help`, `accept`, `preview`, `error`), `Alert`, `Toast`, `Breadcrumbs`, `Pagination`, `Tabs`, `SegmentedControl`, `ButtonGroup`, `Stepper`, `EmptyState`, `StatCard`, `Panel`, `Card` (`media`, `title`, `meta`, `actions`), `DropdownMenu` (disparador + `MenuItem`) y `AvatarGroup`.
 
-`EventForm`, `EventCard`, `EventList`, `OrganizerProfileForm`, `OrganizerForm`, `AuthForm`, `Dialog`, `DataTable`, `Sidebar`, `TabBar`, `TopBar`, `DashboardHero`, `DashboardOverview` y `UsersPanel`. Mobile añade `EventPanel` (el panel de eventos con carga y error); en Web ese comportamiento vive en `EventList`.
+## Organismos (Organisms), 16
+
+Secciones completas que componen moléculas y átomos. **Son genéricos: reciben datos y contenido por props y no conocen eventos, organizadores ni roles.** Si un componente nombra algo de Minka, es de producto y va en el grupo `Product`.
+
+| Nombre | Para qué sirve | Props principales |
+| --- | --- | --- |
+| `Navbar` | Barra superior | `brand`, `items` (`label`, `href`, `current`), `actions`, `onMenu` en pantallas pequeñas |
+| `Sidebar` | Navegación lateral | `sections` (`title`, `items` con `id`, `label`, `icon`, `current`, `badge`), `collapsed`, `header`, `footer` |
+| `TabBar` | Destinos principales en móvil | `items` (`id`, `label`, `icon`, `badge`), `value`, `onChange` |
+| `Footer` | Pie de página | `brand`, `columns` (`title`, `links`), `legal` |
+| `Hero` | Bloque de bienvenida | `title`, `description`, `actions`, `media`, `align` |
+| `PageHeader` | Cabecera de pantalla | `title`, `description`, `breadcrumbs`, `status`, `actions` |
+| `Form` | Formulario por campos | `fields` (`type`: text, email, password, textarea, select, checkbox, switch; `name`, `label`, `required`, `helper`, `options`), `onSubmit(values)`, `submitLabel`, `pending`, `error` y validación con mensajes |
+| `FilterBar` | Búsqueda y filtros | `search`, `filters` (`id`, `label`, `options`), `value`, `onChange`, `onClear` |
+| `DataTable` | Tabla de datos | `columns`, `rows`, `rowKey`, `sort`, `onSortChange`, `loading`, `emptyTitle` |
+| `Dialog` | Diálogo modal centrado | `open`, `title`, `onClose`, `children`, `actions` |
+| `Drawer` | Panel lateral | `open`, `side`, `title`, `onClose`, `children`, `actions` |
+| `CollectionView` | Lista o cuadrícula con estados | `items`, `renderItem`, `layout`, `loading`, `error`, `onRetry`, `emptyTitle` |
+| `StatsGrid` | Cuadrícula de métricas | `title`, `stats` (`label`, `value`, `delta`, `tone`, `icon`) |
+| `Accordion` | Secciones plegables | `items` (`id`, `title`, `content`), `multiple` |
+| `Wizard` | Flujo por pasos | `steps` (`id`, `label`, `content`, `valid`), `onFinish`, `value` |
+| `Timeline` | Línea de actividad | `items` (`id`, `title`, `description`, `time`, `icon`, `tone`) |
+
+## Producto (Product)
+
+Componentes que usan el vocabulario de Minka. Se documentan en Storybook bajo `Product/` para probarlos, pero **no forman parte del sistema de diseño**: se construyen con los componentes genéricos de arriba.
+
+`AuthForm`, `EventForm`, `EventCard`, `EventList`, `OrganizerForm`, `OrganizerProfileForm`, `UsersPanel`, `DashboardHero`, `DashboardOverview`, `AccountMenu`, `EventProgramDetails`, `DisciplineSelect`, `AppSidebar`, `AppTabBar` y `AppTopBar` (la navegación del dashboard por rol).
 
 ## Plantillas (Templates), 3
 
-`DashboardLayout` (con navegación por rol), `AuthLayout`, `FormLayout`.
+`DashboardLayout` (con navegación por rol), `AuthLayout` y `FormLayout`.

@@ -56,6 +56,12 @@ Decisiones abiertas:
 - Mobile: seis TTF en `assets/fonts` enlazados a Android (`android/app/src/main/assets/fonts`) e iOS (`UIAppFonts` y el proyecto Xcode) con `react-native-asset`. `applyGlobalFont()` sustituye `Text` y `TextInput` de `react-native` para elegir el archivo según el peso. Se verificó con una prueba que renderiza ambos. **No se probó en un emulador ni en un dispositivo, y el proyecto iOS no se compiló.**
 - Limitación: Geist no tiene un ExtraBold estático, así que en Mobile el peso display usa Bold.
 
+## Organismos genéricos y padding de Storybook (2026-11-28)
+- El usuario rechazó los organismos por ser específicos de Minka. Ahora hay 16 organismos genéricos en Web y Mobile (Navbar, Sidebar, TabBar, Footer, Hero, PageHeader, Form, FilterBar, DataTable, Dialog, Drawer, CollectionView, StatsGrid, Accordion, Wizard, Timeline) con datos neutros en sus historias. Lo específico pasó a `Product/` sin cambiar su lógica. Moléculas nuevas: Card, DropdownMenu, AvatarGroup y un FileUpload genérico que `OrganizerLogoField` compone.
+- `Dialog` web no se centraba porque el reset de Tailwind quita el `margin: auto` de `<dialog>`. Corregido y con una historia que lo comprueba.
+- Padding: la envoltura del tema en `.storybook/preview.tsx` pone el fondo y 24 px de padding en Docs y en cada historia; `preview-head.html` anula los márgenes propios de Storybook (incluido un borde transparente de 8 px del zoom). Se midieron 1.112 vistas (todas las historias y páginas de Docs a 1000 y 390 px): ninguna con contenido a menos de 24 px del borde. Se corrigieron Tabs, Stepper, Wizard, Pagination, FileUpload y Skeleton en pantallas estrechas.
+- Pendiente: `AuthLayout` todavía muestra el `AuthForm` de producto en su historia, y la navegación del dashboard (`AppSidebar`, etc.) no usa los organismos genéricos.
+
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 
