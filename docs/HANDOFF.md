@@ -34,4 +34,4 @@ Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Fal
 3. Ejecutar `npm run test:e2e` en minka-web con el backend arriba.
 4. Confirmar que el catálogo `docs/design-system/` coincide con los controles implementados.
 5. Push: submódulos primero y plataforma después, solo con aprobación del usuario.
-6. Verificación en Android e iOS: el usuario la pidió después de la de web.
+6. Android e iOS: el usuario decidió cerrar el desarrollo sin verificación en emulador. Sí se comprobó que Android compila e instala (`npm run android`, emulador `MinkaPhone`, `BUILD SUCCESSFUL`), pero los controles de Mobile no se revisaron visualmente en Android ni en iOS. Queda como verificación pendiente antes de publicar una versión móvil.

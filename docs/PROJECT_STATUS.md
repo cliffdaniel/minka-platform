@@ -6,7 +6,7 @@ Verificado el 2026-11-27 ejecutando los comandos de CONTRIBUTING.md.
 | --- | --- | --- | --- | --- |
 | minka-backend | OK | `npm run build` OK | `npm test` OK (1 prueba) | e2e no ejecutado (necesita `DATABASE_URL`). |
 | minka-web | OK | `tsc` y `npm run build` OK | Playwright 5/5 OK | Verificado en navegador y a 390 px. |
-| minka-mobile | OK (tras corregir) | `npm run typecheck` OK | `npm test` OK (4/4, tras corregir) | Sin verificación en emulador. |
+| minka-mobile | OK (tras corregir) | `npm run typecheck` OK | `npm test` OK (4/4, tras corregir) | Android compila e instala; sin revisión visual en Android ni iOS. |
 | plataforma | — | `docker compose config` OK | — | Servicios no levantados. |
 
 ## Funcionalidades (según FEATURES.md y los commits)
