@@ -35,6 +35,21 @@ La base local `minka-platform_postgres_data` (`minka_db`) se migró el 2026-11-2
 ## Sistema de diseño (HTML)
 Actualizado el 2026-11-27 para reflejar lo hecho en la sesión: errores de campo propios (`accesibilidad.html`, `patrones.html`), pruebas de historias y la regla del foco en listas remotas (`equipo.html`, `accesibilidad.html`) y el campo de subida de logo con su estado vacío (`patrones.html`, `patrones.js`, `.sr-only` en `controles.css`). El prototipo del logo ahora usa `.minka-upload*` en lugar del `<input type="file">` nativo. Verificado solo con comprobaciones del DOM en un navegador; no se revisó el aspecto visual de las páginas.
 
+## Sistema de diseño completo (2026-11-28)
+El usuario pidió un catálogo real: antes había 2 átomos y 7 moléculas, sin paleta ni tipografía visibles. Ahora, en Web y Mobile, con los nombres de [inventario.md](design-system/inventario.md):
+- 8 fundamentos (Colors con hex y contraste WCAG, Typography, Spacing, Radius, Elevation, Layout, Motion, Iconography).
+- 56 átomos, 22 moléculas, 14 organismos (15 en Mobile) y 3 plantillas. Se eliminó el nivel Páginas; sus interacciones pasaron a `Organisms/AuthForm`, `OrganizerForm` y `EventForm`.
+- Web: componentes en `minka-web/src/presentation/components/ui/` con estilos solo con tokens (`ui.css`), historias en `src/stories/{foundations,atoms,molecules,organisms,templates}`. Mobile: `src/presentation/components/{ui,molecules,organisms}` y `src/theme/tokens.ts`.
+- Web tiene la capa de tokens generada (`tokens.css`); antes definía 10 variables y usaba hex sueltos. `.account-theme` ahora alias de los tokens.
+- Pruebas: Web 360 historias en navegador (`npm run test:stories`), 31 unitarias (Vitest) y 5 e2e; Mobile 263 pruebas, incluidas todas las historias y la sincronización con `tokens.json`.
+- Se corrigieron defectos que las pruebas encontraron: Chip con botón anidado, spinner con `role="status"` dentro de Button y `FormField` pasando `invalid` a un `<input>`.
+
+Decisiones abiertas:
+- **Tipografía:** `tokens.css` dice `system-ui`, pero la app usa Geist con Arial de respaldo, y en Storybook cae a Arial. No se cambió. Falta decidir cuál es la oficial.
+- Mobile dibuja los íconos con `View` porque no hay `react-native-svg`; los de disciplina son monogramas, no pictogramas. Las historias de Mobile no ejecutan `play` y no se vieron en emulador.
+- Web no tiene ningún componente que use los átomos nuevos fuera de Storybook salvo `Button`: el resto de la app sigue con sus estilos y se migrará por pantallas.
+- El respaldo `minka_db_before_roles.sql` del scratchpad se perdió en una limpieza del directorio. La migración ya estaba verificada.
+
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 

@@ -151,52 +151,16 @@
                 </p>
                 <div class="table-wrap">
                     <table class="reference-table">
-                        <caption>
-                            Puntos de entrada
-                        </caption>
+                        <caption>Atomic Design en ambos catálogos</caption>
                         <thead>
-                            <tr>
-                                <th scope="col">Familia</th>
-                                <th scope="col">Web</th>
-                                <th scope="col">Mobile</th>
-                            </tr>
+                            <tr><th scope="col">Nivel</th><th scope="col">Cantidad</th><th scope="col">Qué contiene</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Primitivos</th>
-                                <td>
-                                    <code>src/presentation/components/Button</code> e <code>Input</code>
-                                </td>
-                                <td>
-                                    <code>src/presentation/components/Button</code> e <code>Input</code>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Navegación</th>
-                                <td><code>DashboardShell</code>, Sidebar, TopBar, TabBar y AccountMenu</td>
-                                <td><code>DashboardLayout</code>, TopBar, TabBar y AccountMenu</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Eventos</th>
-                                <td>
-                                    EventPanel, EventFormFields, EventModalitiesFields y EventProgramDetails
-                                </td>
-                                <td>
-                                    EventPanel, EventFormFields, EventModalitiesFields y EventProgramDetails
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Perfil</th>
-                                <td>OrganizerProfileForm y foto de previsualización</td>
-                                <td>OrganizerProfileForm y OrganizerLogoField</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Patrones de referencia</th>
-                                <td colspan="2">
-                                    Confirmaciones destructivas, tabla adaptable y avisos informativos se
-                                    pueden usar a partir de las reglas del catálogo.
-                                </td>
-                            </tr>
+                            <tr><th scope="row">Foundations</th><td>8</td><td>Colors, Typography, Spacing, Radius, Elevation, Layout, Motion e Iconography. Leen los tokens reales de la aplicación.</td></tr>
+                            <tr><th scope="row">Atoms</th><td>56</td><td>Button, IconButton, Link, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Label, Badge, Chip, Avatar, Spinner, Skeleton, ProgressBar, Tooltip, Surface, Stack y los demás del <a href="inventario.md">inventario</a>, con variantes y estados. Incluye átomos de dominio: DisciplineIcon, DisciplineBadge, EventStatusBadge y RoleBadge.</td></tr>
+                            <tr><th scope="row">Molecules</th><td>22</td><td>FormField, SearchField, PasswordInput, SearchSelect, DatePicker, TimePicker, ScheduleField, DisciplineSelect, FileUpload, Alert, Toast, Breadcrumbs, Pagination, Tabs, SegmentedControl, ButtonGroup, Stepper, EmptyState, StatCard, AccountMenu, EventProgramDetails y Panel.</td></tr>
+                            <tr><th scope="row">Organisms</th><td>14 en Web, 15 en Mobile</td><td>AuthForm, EventForm, EventCard, EventList, OrganizerProfileForm, OrganizerForm, Dialog, DataTable, Sidebar, TabBar, TopBar, DashboardHero, DashboardOverview y UsersPanel. Mobile añade EventPanel.</td></tr>
+                            <tr><th scope="row">Templates</th><td>3</td><td>DashboardLayout, AuthLayout y FormLayout.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -205,6 +169,15 @@
             <section class="doc-section" id="cambios">
                 <h2>Versiones</h2>
                 <div class="spec-grid">
+                    <article class="spec">
+                        <h3>v0.4 · Sistema de diseño completo</h3>
+                        <p>
+                            Fundamentos con la paleta, la tipografía, el espaciado, los radios, la elevación, el
+                            layout, el movimiento y los íconos. 56 átomos, 22 moléculas, 14 organismos y 3
+                            plantillas en Web y Mobile, con los mismos nombres. Se retira el nivel Páginas:
+                            una pantalla es una composición de plantillas, no una pieza del catálogo.
+                        </p>
+                    </article>
                     <article class="spec">
                         <h3>v0.3 · Storybook por Atomic Design</h3>
                         <p>Historias de piezas, plantillas y páginas en Web y Mobile con datos de demostración y escenarios por rol.</p>

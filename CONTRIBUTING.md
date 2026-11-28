@@ -22,6 +22,7 @@ Abre la raíz de `minka-platform` como carpeta de trabajo en Claude Code o Codex
 
 - Revisa `git status --short --branch` en el repositorio que vas a editar. Conserva los cambios que ya estaban en el árbol de trabajo y mantén el diff enfocado en la tarea.
 - Si modificas un contrato de API o de autenticación, revisa los consumidores web y móvil afectados. Para cambios de esquema, verifica el camino de actualización de una base existente con datos de prueba.
+- Si cambias un token en `docs/design-system/tokens.json`, ejecuta `node scripts/sync-tokens.mjs` para regenerar el CSS de Web y actualiza `minka-mobile/src/theme/tokens.ts`. Un componente nuevo se agrega al [inventario](docs/design-system/inventario.md) y a las dos plataformas con su historia.
 - Registra cada funcionalidad nueva o modificada en [FEATURES.md](FEATURES.md). Documenta en Swagger la entrada, respuesta, permisos y errores esperados de cada endpoint que agregues o cambies.
 - Mantén credenciales, tokens y datos personales fuera de Git y de los logs. Usa variables de entorno para secretos y valores de ejemplo en la documentación.
 - Usa `npm ci --legacy-peer-deps` al preparar las dependencias locales desde el lockfile. Mobile requiere Node.js 22.13 o posterior. Incluye los cambios al lockfile cuando cambien dependencias y deja fuera del commit los artefactos generados por las verificaciones.

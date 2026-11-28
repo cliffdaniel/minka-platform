@@ -7,6 +7,8 @@ Fuente compartida. Lee primero [CONTRIBUTING.md](CONTRIBUTING.md): estructura, e
 - `minka-platform` es el orquestador (Docker Compose + submódulos Git). Los tres submódulos tienen su propio historial: `minka-backend` (NestJS + PostgreSQL, rama `main`), `minka-web` (Next.js, rama `master`) y `minka-mobile` (React Native, rama `main`).
 - El Design System vive en [docs/design-system/](docs/design-system/index.html) (tokens en `tokens.json` y `tokens.css`). Web y Mobile lo implementan con Storybook. No se crean colores, tipografías ni componentes fuera de él. No hay archivo Figma propio: no uses Figma como referencia.
 - Diagramas de arquitectura y de base de datos: [docs/diagramas/](docs/diagramas/index.html).
+- Componentes: [docs/design-system/inventario.md](docs/design-system/inventario.md) es el contrato de nombres y alcance (Foundations, Atoms, Molecules, Organisms, Templates; sin Pages). Web y Mobile usan los mismos nombres. Los títulos de Storybook y los nombres de componentes van en inglés y los textos visibles en español.
+- Tokens: `docs/design-system/tokens.json` es la fuente. Web los lee de `minka-web/src/presentation/theme/tokens.css`, que se genera con `node scripts/sync-tokens.mjs` y no se edita a mano. Mobile los define en `minka-mobile/src/theme/tokens.ts`. Una prueba en cada app falla si se desincronizan.
 
 ## Reglas que no se pueden fallar
 
