@@ -25,6 +25,13 @@ Para correr el e2e: backend en :4000 con una base desechable, web compilada (`np
 
 La base local `minka-platform_postgres_data` (`minka_db`) se migró el 2026-11-27 con `DB_SYNC=false` y `DB_MIGRATIONS_RUN=true`: se aplicaron las 5 migraciones y su único usuario, `admin@minka.pe`, pasó de `admin` a `super_admin`. Ya arranca con `DB_SYNC=true`. No hay organizadores ni eventos en esa base. El respaldo previo no se versionó.
 
+## Pruebas de historias (2026-11-27)
+- Web: `npm run test:stories` (`tests/storybook/stories.spec.ts`, config `playwright.storybook.config.ts`) recorre las 101 historias del build estático: render, `play`, consola y axe (serious y critical). Sirve el build con `python3 -m http.server` en el puerto 6007.
+- Mobile: `__tests__/stories.test.tsx` renderiza las 92 historias con un compositor mínimo (aplica `args`, `render` y `decorators`). No usa `@storybook/react` porque es solo ESM y Jest 29 no lo transforma. No ejecuta los `play`.
+- Defecto de producto corregido: en `SearchSelect` web, «Cargar más resultados» y «Reintentar» cerraban el popup y abortaban la carga porque el botón recibía el foco y luego se deshabilitaba. Ahora evitan el cambio de foco con `onMouseDown`.
+- Historias corregidas: «Keyboard Dismissal» (el clic de `userEvent` no enfoca un `<summary>`) y «Choose Date/Time» (carrera con el `<dialog>` que tarda en desmontarse). `asyncUtilTimeout` sube a 5 s en `.storybook/preview.tsx`.
+- No se volvió a correr el e2e de Playwright tras el cambio en `SearchSelect`.
+
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
 

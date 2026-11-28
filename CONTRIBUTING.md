@@ -53,9 +53,9 @@ Ejecuta los comandos desde el repositorio correspondiente. Cubre el comportamien
 
 | Cambios en | Verificación |
 | --- | --- |
-| Mobile | `npm run lint`, `npm run typecheck` y `npm test -- --runInBand`. Si cambia una pantalla o un flujo, pruébalo en el emulador o dispositivo correspondiente. Para un componente del catálogo, usa `npm run storybook` en lugar del Metro normal y recarga la app. |
+| Mobile | `npm run lint`, `npm run typecheck` y `npm test -- --runInBand` (incluye el render de todas las historias). Si cambia una pantalla o un flujo, pruébalo en el emulador o dispositivo correspondiente. Para un componente del catálogo, usa `npm run storybook` en lugar del Metro normal y recarga la app. |
 | Backend | `npm run lint`, `npm run build` y `npm test -- --runInBand`. Para API o persistencia, ejecuta `npm run test:e2e -- --runInBand` con `DATABASE_URL` configurada para una base local de pruebas. |
-| Web | `npm run lint`, `npm test` (Vitest) y `npm exec -- tsc --noEmit --incremental false`. Para cambios de UI, abre la página afectada en el navegador. Para cambios de empaquetado, ejecuta `npm run build`. |
+| Web | `npm run lint`, `npm test` (Vitest) y `npm exec -- tsc --noEmit --incremental false`. Si tocas un componente o una historia, ejecuta también `npm run test:stories`. Para cambios de UI, abre la página afectada en el navegador. Para cambios de empaquetado, ejecuta `npm run build`. |
 | Plataforma | `docker compose config --quiet`. Si cambia cómo arranca un servicio, levántalo y comprueba que responda. |
 
 Para probar autenticación en móvil, inicia PostgreSQL y el backend desde la raíz con `docker compose up -d postgres minka-backend`. Desde `minka-mobile`, ejecuta `npm start` en una terminal y `npm run android` en otra. La compilación nativa de iOS se verifica desde macOS con Xcode siguiendo el README de Mobile.
