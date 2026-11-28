@@ -11,14 +11,14 @@
 
     function enhanceSelect(select) {
         const wrap = element('div', '', { class: 'minka-select' });
-        const field = element('div', '', { class: 'minka-select-input' });
+        const field = element('div', '', { class: 'minka-field-frame minka-select-input' });
         const popup = element('div', '', { class: 'minka-select-popup', hidden: '' });
         const id = select.id || `demo-select-${++nextControl}`;
         const originalLabel = select.labels[0];
         const label = originalLabel
             ? Array.from(originalLabel.childNodes).filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.textContent).join('').trim()
             : 'Elige una opción';
-        const search = element('input', '', { type: 'text', role: 'combobox', 'aria-label': label, 'aria-expanded': 'false', 'aria-autocomplete': 'list', autocomplete: 'off', id });
+        const search = element('input', '', { type: 'text', role: 'combobox', 'aria-label': label, 'aria-expanded': 'false', 'aria-autocomplete': 'list', autocomplete: 'off', spellcheck: 'false', autocapitalize: 'none', id });
         const toggle = element('button', '', { type: 'button', 'aria-label': 'Mostrar opciones', tabindex: '-1' });
         const list = element('ul', '', { id: `${id}-options`, role: 'listbox', 'aria-label': label });
         let active = -1;
@@ -160,29 +160,44 @@
     function renderClock(dialog, value, choose) {
         const initial = /^([01]\d|2[0-3]):[0-5]\d$/.test(value) ? value : '07:00';
         const selected = initial.split(':');
+        const labels = ['Hora', 'Minutos'];
+        let active = 0;
         const clock = element('div', '', { class: 'minka-clock' });
-        const output = element('output', initial, { 'aria-live': 'polite' });
-        const control = (label, limit, index) => {
-            const group = element('div', '', { class: 'minka-time-group', role: 'group', 'aria-label': label });
-            const options = element('div', '', { class: 'minka-time-options' });
-            for (let number = 0; number < limit; number += 1) {
+        const display = element('div', '', { class: 'minka-clock-display' });
+        const group = element('div', '', { class: 'minka-time-group', role: 'group' });
+        const options = element('div', '', { class: 'minka-time-options' });
+        const parts = labels.map((label, index) => {
+            const part = button('', () => { active = index; draw(); });
+            return part;
+        });
+        const draw = () => {
+            parts.forEach((part, index) => {
+                part.replaceChildren(document.createTextNode(selected[index]), element('small', labels[index]));
+                part.setAttribute('aria-pressed', String(index === active));
+                part.setAttribute('aria-label', `Editar ${labels[index].toLowerCase()}, ${selected[index]}`);
+            });
+            group.setAttribute('aria-label', labels[active]);
+            options.replaceChildren();
+            options.scrollTop = 0;
+            for (let number = 0; number < (active === 0 ? 24 : 60); number += 1) {
                 const item = pad(number);
-                const select = button(item, () => {
-                    options.querySelector('[aria-pressed="true"]').setAttribute('aria-pressed', 'false');
-                    selected[index] = item;
-                    select.setAttribute('aria-pressed', 'true');
-                    output.textContent = selected.join(':');
+                const option = button(item, () => {
+                    selected[active] = item;
+                    if (active === 0) active = 1;
+                    draw();
+                    parts[active].focus();
                 });
-                select.setAttribute('aria-pressed', String(item === selected[index]));
-                options.append(select);
+                option.setAttribute('aria-pressed', String(item === selected[active]));
+                options.append(option);
             }
-            group.append(element('strong', label), options);
-            return group;
         };
+        display.append(parts[0], element('span', ':', { 'aria-hidden': 'true' }), parts[1]);
+        group.append(options);
         const apply = button('Aplicar hora', () => choose(selected.join(':')));
         apply.className = 'minka-picker-action';
-        clock.append(output, control('Hora', 24, 0), control('Minutos', 60, 1), apply);
+        clock.append(display, group, apply);
         dialog.append(clock);
+        draw();
     }
 
     function enhanceSchedule(input) {
@@ -218,9 +233,14 @@
             dialog.showModal();
         }, `Elegir · ${labelText}`);
         trigger.className = 'minka-picker-trigger';
+        trigger.setAttribute('aria-haspopup', 'dialog');
         trigger.append(element('span', '', { class: date ? 'minka-calendar-icon' : 'minka-clock-icon', 'aria-hidden': 'true' }));
+        if (!input.id) input.id = `minka-horario-${++nextControl}`;
+        label.htmlFor = input.id;
         label.replaceWith(wrap);
-        wrap.append(label, trigger);
+        const field = element('div', '', { class: 'minka-field-frame' });
+        field.append(input, trigger);
+        wrap.append(label, field);
     }
 
     document.querySelectorAll('select[data-searchable]').forEach(enhanceSelect);
