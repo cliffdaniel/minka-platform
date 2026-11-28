@@ -45,10 +45,16 @@ El usuario pidió un catálogo real: antes había 2 átomos y 7 moléculas, sin 
 - Se corrigieron defectos que las pruebas encontraron: Chip con botón anidado, spinner con `role="status"` dentro de Button y `FormField` pasando `invalid` a un `<input>`.
 
 Decisiones abiertas:
-- **Tipografía:** `tokens.css` dice `system-ui`, pero la app usa Geist con Arial de respaldo, y en Storybook cae a Arial. No se cambió. Falta decidir cuál es la oficial.
+- **Tipografía:** resuelta el 2026-11-28, Geist es la oficial. Ver la sección siguiente.
 - Mobile dibuja los íconos con `View` porque no hay `react-native-svg`; los de disciplina son monogramas, no pictogramas. Las historias de Mobile no ejecutan `play` y no se vieron en emulador.
 - Web no tiene ningún componente que use los átomos nuevos fuera de Storybook salvo `Button`: el resto de la app sigue con sus estilos y se migrará por pantallas.
 - El respaldo `minka_db_before_roles.sql` del scratchpad se perdió en una limpieza del directorio. La migración ya estaba verificada.
+
+## Tipografía oficial: Geist (2026-11-28)
+- `tokens.json` (v0.3) gana el grupo `font` (`sans`, `mono`). Web lo recibe en `tokens.css`; la hoja de la app y `ui.css` usan `var(--font-geist-sans, Geist)` para que Storybook y la app compartan la misma cadena de respaldo.
+- Storybook web carga Geist con archivos locales (`.storybook/fonts`, `preview-head.html`), sin depender de la red. El sitio de documentación y los diagramas también (`docs/design-system/fonts`).
+- Mobile: seis TTF en `assets/fonts` enlazados a Android (`android/app/src/main/assets/fonts`) e iOS (`UIAppFonts` y el proyecto Xcode) con `react-native-asset`. `applyGlobalFont()` sustituye `Text` y `TextInput` de `react-native` para elegir el archivo según el peso. Se verificó con una prueba que renderiza ambos. **No se probó en un emulador ni en un dispositivo, y el proyecto iOS no se compiló.**
+- Limitación: Geist no tiene un ExtraBold estático, así que en Mobile el peso display usa Bold.
 
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.

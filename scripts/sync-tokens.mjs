@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const tokens = JSON.parse(readFileSync(join(root, 'docs/design-system/tokens.json'), 'utf8'));
 
 const unit = { space: 'px', radius: 'px', typeSize: 'px', layout: 'px', motionMs: 'ms', breakpoint: 'px', focus: 'px' };
-const prefix = { color: 'color', space: 'space', radius: 'radius', typeSize: 'type', layout: 'layout', motionMs: 'motion', layers: 'layer', lineHeight: 'line', fontWeight: 'weight', breakpoint: 'breakpoint', shadow: 'shadow', focus: 'focus' };
+const prefix = { color: 'color', space: 'space', radius: 'radius', typeSize: 'type', layout: 'layout', motionMs: 'motion', layers: 'layer', lineHeight: 'line', fontWeight: 'weight', breakpoint: 'breakpoint', shadow: 'shadow', focus: 'focus', font: 'font' };
 
 const lines = [];
 for (const [group, values] of Object.entries(tokens)) {

@@ -1,6 +1,8 @@
+@font-face { font-family: 'Geist'; src: url('../design-system/fonts/Geist-Variable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+
 :root {
     color-scheme: light;
-    font-family: system-ui, sans-serif;
+    font-family: Geist, system-ui, sans-serif;
     color: #26211e;
     background: #f8f6f2;
     --surface: #fff;

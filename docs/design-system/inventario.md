@@ -8,7 +8,7 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 - Título de historia: `Atoms/Button`, `Molecules/FormField`, etc. Un archivo de historias por componente.
 - Un átomo no importa otros átomos con lógica propia. Una molécula compone átomos. Un organismo compone moléculas y átomos.
 - Colores, espaciado, radios, tamaños de texto, sombras y tiempos salen de los tokens. Nada de hex sueltos en componentes.
-- No se cambia la identidad visual (verde `#265846`) ni la tipografía de la app.
+- No se cambia la identidad visual (verde `#265846`). La tipografía oficial es **Geist** (y **Geist Mono** para código y teclas), en Web, Android e iOS; los tokens `font.sans` y `font.mono` de `tokens.json` la definen. Los archivos están en `docs/design-system/fonts/` (Web y documentación), `minka-web/.storybook/fonts/` (Storybook) y `minka-mobile/assets/fonts/` (Mobile), con su licencia OFL.
 - Cada componente documenta sus variantes, estados (normal, foco, deshabilitado, error, carga cuando aplique) y tamaños en historias.
 
 ## Fundamentos (Foundations)
