@@ -26,7 +26,11 @@ Las disciplinas incluyen running, atletismo, trail, triatlón, duatlón, ciclism
 
 ## Perfil del organizador
 
-Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar y se guarda como archivo en el almacenamiento del backend, no en la base de datos. El perfil se guarda por separado de la cuenta de acceso y solo su titular puede consultarlo y modificarlo por estos endpoints.
+Disponible desde el menú de cuenta en Web y Mobile. El organizador puede guardar su nombre público, razón social, ciudad, correo de contacto, sitio web, descripción y un logo PNG o JPG de hasta 512 KB. El nombre público es obligatorio y los demás campos son opcionales. El logo se puede reemplazar o quitar y se guarda como archivo en el almacenamiento del backend, no en la base de datos. El perfil se guarda por separado de la cuenta de acceso. Lo consultan y modifican:
+- su titular, con `/me/profile`;
+- el super administrador, para cualquier organizador.
+
+El super administrador lo hace desde Usuarios → «Editar perfil» en la fila del organizador, en Web (`/dashboard/usuarios/{id}/perfil-organizador`) y en Mobile. Usa el mismo formulario y los cambios se ven en los eventos y en la página pública.
 
 ## Organizador en los eventos y página pública
 
@@ -60,6 +64,8 @@ Storybook Web y Mobile son un sistema de diseño completo con los mismos nombres
 | `GET /api/dashboard` | Sesión activa. Devuelve la cuenta y los datos asignados al rol. Conserva la clave `races` para clientes existentes e incluye eventos de todas las disciplinas. |
 | `GET /api/users` y `GET /api/users/{id}` | Super administrador. Devuelven cuentas. |
 | `POST /api/users/organizers` | Super administrador. Crea la cuenta de un organizador. |
+| `GET /api/users/{id}/organizer-profile` | Super administrador. Perfil de un organizador, o los valores iniciales de su cuenta si nunca lo guardó. 404 si la cuenta no es de organizador. |
+| `PUT /api/users/{id}/organizer-profile` | Super administrador. Guarda el perfil de un organizador; mismo cuerpo que `/me/profile`. 404 si la cuenta no es de organizador. |
 | `GET /api/organizers/{id}` | Público. Perfil público del organizador y sus eventos publicados que vienen. 404 si la cuenta no publica eventos. |
 | `GET /api/organizers/{id}/logo` | Público. Logo PNG o JPG, con caché larga (la URL lleva `?v=`). 404 si no tiene logo. |
 | `GET /api/users/organizers/me/profile` | Organizador autenticado. Devuelve su perfil o los valores iniciales de su cuenta. |
