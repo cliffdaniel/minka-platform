@@ -28,8 +28,8 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 
 | # | Nombre | Variantes y props principales |
 | --- | --- | --- |
-| 1 | `Button` | `variant`: primary, secondary, outline, ghost, danger. `size`: sm, md, lg. `loading`, `disabled`, `leadingIcon`, `fullWidth` |
-| 2 | `IconButton` | `icon`, `label` (accesible), `variant`, `size` |
+| 1 | `Button` | `variant`: primary, secondary, outline, ghost, danger. `size`: sm, md, lg. `loading`, `disabled`, `leadingIcon`, `fullWidth`. Con `href` es un enlace con el mismo aspecto |
+| 2 | `IconButton` | `icon`, `label` (accesible), `variant`, `size`. Con `href` es un enlace |
 | 3 | `Link` | `href`, `tone`: brand, muted. `external` |
 | 4 | `Input` | `type`, `size`, `invalid`, `disabled`, `leading`, `trailing` |
 | 5 | `Textarea` | `rows`, `invalid`, `disabled`, `maxLength` con contador |
@@ -73,7 +73,7 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 | 43 | `Time` | fecha y hora en horario de Perú |
 | 44 | `ToggleButton` | `pressed`, `variant` |
 | 45 | `Tab` | `selected`, `disabled` |
-| 46 | `MenuItem` | `icon`, `tone`, `disabled` |
+| 46 | `MenuItem` | `icon`, `tone`, `disabled`, `href` |
 | 47 | `ListItem` | `leading`, `trailing`, `selected` |
 | 48 | `Breadcrumb` | un tramo del camino, `current` |
 | 49 | `PaginationButton` | `page`, `current`, `disabled` |
@@ -89,17 +89,19 @@ Fuente única de qué componentes existen y cómo se llaman. Web y Mobile implem
 
 Piezas genéricas que componen átomos. Ninguna conoce el dominio de Minka.
 
-`FormField`, `PasswordInput`, `SearchField`, `SearchSelect`, `DatePicker`, `TimePicker`, `ScheduleField`, `FileUpload` (genérico: `label`, `help`, `accept`, `preview`, `error`), `Alert`, `Toast`, `Breadcrumbs`, `Pagination`, `Tabs`, `SegmentedControl`, `ButtonGroup`, `Stepper`, `EmptyState`, `StatCard`, `Panel`, `Card` (`media`, `title`, `meta`, `actions`), `DropdownMenu` (disparador + `MenuItem`) y `AvatarGroup`.
+`FormField`, `PasswordInput`, `SearchField`, `SearchSelect`, `DatePicker`, `TimePicker`, `ScheduleField`, `FileUpload` (genérico: `label`, `help`, `accept`, `preview`, `error`), `Alert`, `Toast`, `Breadcrumbs`, `Pagination`, `Tabs`, `SegmentedControl`, `ButtonGroup`, `Stepper`, `EmptyState`, `StatCard`, `Panel`, `Card` (`media`, `title`, `meta`, `actions`), `DropdownMenu` (disparador + `MenuItem`, `header`, opciones con `href`) y `AvatarGroup`. `Panel` (`title`, `description`, `action`, `id`) vive en el catálogo, no en el producto.
 
 ## Organismos (Organisms), 16
 
 Secciones completas que componen moléculas y átomos. **Son genéricos: reciben datos y contenido por props y no conocen eventos, organizadores ni roles.** Si un componente nombra algo de Minka, es de producto y va en el grupo `Product`.
 
+**Enlaces del router.** `Button`, `IconButton`, `MenuItem`, `DropdownMenu`, `Navbar`, `Sidebar` y `TabBar` aceptan `href` y, en Web, `linkAs` (por defecto `a`; la app pasa `next/link` para navegar sin recargar). En Mobile la navegación va por `onPress`/`onSelect`.
+
 | Nombre | Para qué sirve | Props principales |
 | --- | --- | --- |
-| `Navbar` | Barra superior | `brand`, `items` (`label`, `href`, `current`), `actions`, `onMenu` en pantallas pequeñas |
-| `Sidebar` | Navegación lateral | `sections` (`title`, `items` con `id`, `label`, `icon`, `current`, `badge`), `collapsed`, `header`, `footer` |
-| `TabBar` | Destinos principales en móvil | `items` (`id`, `label`, `icon`, `badge`), `value`, `onChange` |
+| `Navbar` | Barra superior | `brand`, `leading` (por ejemplo volver), `items` (`label`, `href`, `current`), `actions`, `onMenu` en pantallas pequeñas |
+| `Sidebar` | Navegación lateral | `sections` (`title`, `items` con `id`, `label`, `icon`, `href`, `current`, `badge`), `collapsed` (`true` o `'auto'`: riel en tablet), `header`, `footer` |
+| `TabBar` | Destinos principales en móvil | `items` (`id`, `label`, `icon`, `badge`, `href`), `value`, `onChange` |
 | `Footer` | Pie de página | `brand`, `columns` (`title`, `links`), `legal` |
 | `Hero` | Bloque de bienvenida | `title`, `description`, `actions`, `media`, `align` |
 | `PageHeader` | Cabecera de pantalla | `title`, `description`, `breadcrumbs`, `status`, `actions` |
@@ -116,10 +118,27 @@ Secciones completas que componen moléculas y átomos. **Son genéricos: reciben
 
 ## Producto (Product)
 
-Componentes que usan el vocabulario de Minka. Se documentan en Storybook bajo `Product/` para probarlos, pero **no forman parte del sistema de diseño**: se construyen con los componentes genéricos de arriba.
+Componentes que usan el vocabulario de Minka. Se documentan en Storybook bajo `Product/` para probarlos, pero **no forman parte del sistema de diseño**: son envoltorios finos que **componen** los componentes genéricos de arriba y no traen estilos propios de navegación, paneles ni formularios.
 
-`AuthForm`, `EventForm`, `EventCard`, `EventList`, `OrganizerForm`, `OrganizerProfileForm`, `UsersPanel`, `DashboardHero`, `DashboardOverview`, `AccountMenu`, `EventProgramDetails`, `DisciplineSelect`, `AppSidebar`, `AppTabBar` y `AppTopBar` (la navegación del dashboard por rol).
+| Producto | Compone |
+| --- | --- |
+| `DashboardShell` | Plantilla `DashboardLayout` con `AppSidebar`, `AppTopBar` y `AppTabBar` |
+| `AppSidebar` | `Sidebar` con `collapsed="auto"`, `Logo` y los destinos del rol |
+| `AppTabBar` | `TabBar` con los destinos del rol |
+| `AppTopBar` | `Navbar` con `IconButton` para volver, el título, `Button` «Nuevo evento» y el menú de la cuenta |
+| `AccountMenu` | `DropdownMenu` con `Avatar`, nombre y rol en `header`, perfil y cierre de sesión |
+| `AuthPageLayout` | Plantilla `AuthLayout` con `Logo` y la foto de Minka |
+| `DashboardHero`, `DashboardOverview` | `Hero` y `StatsGrid` |
+| `EventCard`, `EventList`, `UsersPanel` | `Card`, `CollectionView`, `ListItem` con `Avatar` y `RoleBadge` |
+| `EventForm`, `OrganizerForm`, `OrganizerProfileForm`, `AuthForm` | `FormField`, `Input`, `Textarea`, `Stack`, `Inline`, `Alert` |
+| `EventProgramDetails`, `DisciplineSelect` | `Accordion`, `Surface`, `Time`, `Link`, `SearchSelect` |
 
 ## Plantillas (Templates), 3
 
-`DashboardLayout` (con navegación por rol), `AuthLayout` y `FormLayout`.
+Genéricas, con zonas por props:
+
+- `DashboardLayout`: `sidebar`, `topbar` y `tabbar`. La barra superior queda fija. El lateral se oculta y aparece `tabbar` en móvil. Incluye el salto al contenido.
+- `AuthLayout`: `brand`, `title`, `description`, `media` y el formulario como hijo.
+- `FormLayout`: `title`, `description`, `aside`.
+
+Mobile implementa `DashboardLayout` (`topbar`, `sidebar`, `tabbar`, `wideFrom`) y `AuthLayout` (`brand`, `tagline`, `footnote`) con los mismos nombres.
