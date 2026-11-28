@@ -17,7 +17,13 @@ Codex trabajaba en corregir los controles de formulario, a petición del usuario
 - AGENTS.md pasa a ser la fuente neutral y CLAUDE.md la importa.
 
 ## Verificación en web (2026-11-27)
-Revisada en Storybook (Chrome, escritorio): perfil del organizador con logo, selector autocompletable, página Nuevo evento, calendario y reloj. Un solo borde en los inputs, foco visible y selectores funcionando. Se corrigió «Noviembre De» → «Noviembre de». Observación abierta: la cuadrícula de horas del reloj muestra 3 filas con scroll interno. No se probaron estados de error, ancho móvil/tablet ni la subida real del logo.
+Storybook en Chrome (escritorio) y la app real con Playwright a 390 px. Un solo borde, foco visible, select, calendario y reloj funcionando. Corregido: «Noviembre De»; cuadrícula de horas sin scroll interno; fecha y hora en una columna a menos de ~330 px; el primer campo inválido queda bajo la cabecera pegajosa; `lang="es"` y título «Minka» (era «Create Next App»). La prueba de perfil espera ahora «Subir logo» en el estado vacío.
+
+Pendiente de decisión: los campos obligatorios vacíos muestran la burbuja nativa del navegador (en inglés, sin estilo Minka). Usar `noValidate` y el `error` de `Input` implica tocar todos los formularios.
+
+Para correr el e2e: backend en :4000 con una base desechable, web compilada (`npm run build` + `next start`; el modo dev cuelga el evento `load` desde 127.0.0.1) y variables `MINKA_{ORGANIZER,RUNNER,ADMIN}_{EMAIL,PASSWORD}` y `MINKA_PROFILE_TEST_{EMAIL,PASSWORD}`. El backend limita los logins por minuto: usa `--workers=1` y espera entre corridas. La prueba de eventos no es idempotente con datos previos.
+
+La base `minka-platform_postgres_data` es de un esquema anterior (rol `admin`): `DB_SYNC=true` falla contra ella. Hace falta `DB_SYNC=false` con `DB_MIGRATIONS_RUN=true`, que reasigna roles. No se ejecutó.
 
 ## Pruebas ejecutadas
 Ver tabla en [PROJECT_STATUS.md](PROJECT_STATUS.md). Todo lo ejecutado pasa. Falta la verificación visual.
